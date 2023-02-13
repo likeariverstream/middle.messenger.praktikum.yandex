@@ -9,6 +9,8 @@
 
 [Репозиторий](https://github.com/likeariverstream/middle.messenger.praktikum.yandex.git)
 
+[Посмотреть на netlify](https://eloquent-granita-6eb372.netlify.app/)
+
 ## Установка
 
 - `npm install` — установка стабильной версии,
