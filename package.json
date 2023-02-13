@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "parcel src/index.hbs --no-cache",
-    "start": "parcel build src/index.hbs --no-cache && node server.js"
+    "build": "parcel build src/index.hbs --no-cache",
+    "start": "npm run build && node server.js"
   },
   "repository": {
     "type": "git",
