@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../index.css">
+    <title>Messenger</title>
+</head>
+
+<body class="main">
+    <form class="form">
+        {{> input/input class="input" placeholder="Введите email" name="email" type="text"}}
+        {{> input/input class="input"  placeholder="Введите пароль" name="password" type="password"}}
+        {{> input/input class="input"  placeholder="Подтвердите пароль" name="confirm" type="password"}}
+        {{> button/button class="button" type="submit" text="Зарегистрироваться"}}
+        {{> link/link class="link" link="../../index.hbs" text="Вернуться назад?"}}
+        {{> link/link class="link" link="../500/500.hbs" text="Или посмотреть еще варианты"}}
+    </form>
+</body>
+
+</html>

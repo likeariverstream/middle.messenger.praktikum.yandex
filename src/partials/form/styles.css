@@ -1,0 +1,22 @@
+.form {
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 360px;
+    gap: 12px;
+    border: 2px solid white;
+}
+
+.input {
+    width: 280px;
+    &:focus {
+        border: 1px solid blue;
+        background: black;
+    }
+}
+
+.link {
+    color: white;
+}

@@ -1,0 +1,16 @@
+@import "/partials/form/styles.css";
+
+.main {
+    max-width: 1440px;
+    height: 100vh;
+    margin: 0 auto;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    color: #fff;
+}
