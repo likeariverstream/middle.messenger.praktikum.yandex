@@ -6,7 +6,8 @@
 
 В данный момент используются Javascript, Handlebars, PostCSS, Express.js, Parcel.
 Верстка произведена по макету: ui/image.jpg
-![Версии](https://github.com/yandex-praktikum/mf.messenger.praktikum.yandex.images/blob/master/mf/vers.png)
+
+[Репозиторий](https://github.com/likeariverstream/middle.messenger.praktikum.yandex.git)
 
 ## Установка
 
