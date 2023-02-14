@@ -1,0 +1,78 @@
+---
+chats:
+- nameChat: когорта-25
+  senderОfTheLastMessage: Вася
+  lastMessage: как бы сделать красивую верстку...
+  timeOfTheLastMessage: 22.02.23
+- nameChat: когорта-25
+  senderОfTheLastMessage: Вася
+  lastMessage: как бы сделать красивую верстку...
+  timeOfTheLastMessage: 22.02.23
+- nameChat: когорта-25
+  senderОfTheLastMessage: Вася
+  lastMessage: как бы сделать красивую верстку...
+  timeOfTheLastMessage: 22.02.23
+- nameChat: когорта-25
+  senderОfTheLastMessage: Вася
+  lastMessage: как бы сделать красивую верстку...
+  timeOfTheLastMessage: 22.02.23
+- nameChat: когорта-25
+  senderОfTheLastMessage: Вася
+  lastMessage: как бы сделать красивую верстку...
+  timeOfTheLastMessage: 22.02.23
+- nameChat: когорта-25
+  senderОfTheLastMessage: Вася
+  lastMessage: как бы сделать красивую верстку...
+  timeOfTheLastMessage: 22.02.23
+- nameChat: когорта-25
+  senderОfTheLastMessage: Вася
+  lastMessage: как бы сделать красивую верстку...
+  timeOfTheLastMessage: 22.02.23
+
+---
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>Messenger</title>
+</head>
+
+<body>
+    <main class="chat">
+        <section class="side-panel">
+            <ul class="list">
+                {{#each chats}}
+                <li class="item">
+                    <div class="container">
+                        <h4 class="title">{{this.nameChat}}</h4>
+                                <p class="time">{{this.timeOfTheLastMessage}}</p>
+                    </div>
+                    <div class="container">
+                        <p class="user">{{this.senderОfTheLastMessage}}:</p>
+                        <p class="message">{{this.lastMessage}}</p>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+
+        <section class="content">
+            <nav class="chat-nav">
+            {{> link/link class="link" link="../index.hbs" text="Вернуться назад?"}}
+            {{> link/link class="link" link="./profile.hbs" text="Профиль"}}
+            </nav>
+            {{> error/error class="error" message="Чат в разработке"}}
+            <div class="input-message-container">
+                {{> input/input class="input-message" placeholder="Введите сообщение" name="message" type="text"}}
+                {{> button/button class="button" type="button" text="Отправить"}}
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -10,13 +10,32 @@
 }
 
 .input {
+    border: 0;
+    border-radius: 0;
     width: 280px;
+    color: #777;
     &:focus {
-        border: 1px solid blue;
+        outline: 1px solid blue;
         background: black;
     }
+    &_profile {
+        border: none;
+        border-bottom: 1px solid blue;
+        outline: none;
+        &:focus {
+            color: #777;
+            outline-bottom: 1px solid blue;
+            background: black;
+        }
+    } 
 }
 
 .link {
     color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    &:hover {
+        cursor: pointer;
+        opacity: .7;
+    } 
 }

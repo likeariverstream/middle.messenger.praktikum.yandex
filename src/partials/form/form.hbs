@@ -1,7 +1,8 @@
 <form class={{class}}>
     {{> input/input class="input" type="text" name="login" placeholder="Введите логин" }}
     {{> input/input class="input" type="password" name="password" placeholder="Введите пароль" }}
-    {{> button/button class="button" type="submit" text="Войти" }}
-    {{> link/link class="link" link="./pages/register/register.hbs" text="Нет аккаунта?"}}
-    {{> link/link class="link" link="./pages/404/404.hbs" text="Задать вопрос"}}
+    {{> button/button class="button" type="button" text="Войти" }}
+    {{> link/link class="link" link="./pages/register.hbs" text="Нет аккаунта?"}}
+    {{> link/link class="link" link="./pages/404.hbs" text="Задать вопрос"}}
+    {{> link/link class="link" link="./pages/chat.hbs" text="Войти с помощью Mail.ru"}}
 </form>
