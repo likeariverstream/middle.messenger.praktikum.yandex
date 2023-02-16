@@ -1,0 +1,31 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "engines": {
+    "node": "v16.0.0"
+  },
+  "scripts": {
+    "dev": "parcel src/index.hbs --no-cache",
+    "build": "parcel build src/index.hbs --no-cache",
+    "start": "npm run build && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/likeariverstream/middle.messenger.praktikum.yandex.git"
+  },
+  "baseUrl": "/",
+  "author": "Sergey Kalachev",
+  "license": "ISC",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
+    "parcel": "^2.8.3",
+    "postcss": "^8.4.21",
+    "postcss-import": "^15.1.0",
+    "postcss-nested": "^6.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "handlebars": "^4.7.7"
+  }
+}
