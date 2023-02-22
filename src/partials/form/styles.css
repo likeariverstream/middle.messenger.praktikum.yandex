@@ -1,3 +1,5 @@
+@import "../../vars.css";
+
 .form {
     padding: 16px 12px;
     display: flex;
@@ -6,32 +8,32 @@
     align-items: center;
     max-width: 360px;
     gap: 12px;
-    border: 2px solid white;
+    border: 2px solid $white;
 }
 
 .input {
     border: 0;
     border-radius: 0;
     width: 280px;
-    color: #777;
+    color: $white;
     &:focus {
-        outline: 1px solid blue;
-        background: black;
+        outline: 1px solid $blue;
+        background: $black;
     }
     &_profile {
         border: none;
-        border-bottom: 1px solid blue;
+        border-bottom: 1px solid $blue;
         outline: none;
         &:focus {
-            color: #777;
-            outline-bottom: 1px solid blue;
-            background: black;
+            color: $white;
+            outline-bottom: 1px solid $blue;
+            background: $black;
         }
     } 
 }
 
 .link {
-    color: white;
+    color: $white;
     text-decoration: none;
     transition: all 0.2s ease;
     &:hover {

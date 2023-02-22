@@ -1,10 +1,12 @@
+@import "../../vars.css";
+
 .item {
     width: 320px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    outline: 1px solid #fff;
+    outline: 1px solid $white;
     padding: 16px 12px 16px 12px;
 }
 
@@ -17,18 +19,18 @@
 
 .title {
     margin: 0;
-    color: #fff;
+    color: $white;
 }
 
 .time {
     margin: 0;
-    color: #fff;
+    color: $white;
 }
 
 .message {
-    color: #fff;
+    color: $white;
 }
 
 .user {
-    color: #fff;
+    color: $white;
 }

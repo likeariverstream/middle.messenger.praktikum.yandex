@@ -1,8 +1,9 @@
 @import "/partials/form/styles.css";
 @import "/partials/chatListItem/styles.css";
+@import "./vars.css";
 
 body {
-    background: black;
+    background: $black;
     max-width: 1440px;
     height: 100vh;
     margin: 0 auto;
@@ -12,7 +13,7 @@ body {
     width: 100%;
     height: 100vh;
     margin: 0 auto;
-    background: black;
+    background: $black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,7 +21,7 @@ body {
 }
 
 .error {
-    color: #fff;
+    color: $white;
     display: block;
 }
 
@@ -55,12 +56,12 @@ body {
 .input-message {
     width: 80%;
     height: 32px;
-    outline: 1px solid #fff;
+    outline: 1px solid $white;
     border-radius: 8px;
         &:focus {
             border: 1px solid blue;
-            background: black;
-            color: #777;
+            background: $black;
+            color: white;
         }
 }
 
@@ -74,20 +75,20 @@ body {
 .button {
     margin: 0;
     border: 0;
-    background: #fff;
+    background: $white;
     border-radius: 0;
     transition: all 0.2s ease;
     &:hover {
         cursor: pointer;
         opacity: .7;
-        outline: 2px solid #777;
+        outline: 2px solid $white;
     } 
 }
 
 .avatar {
     width: 36px;
     height: 36px;
-    background: #777;
+    background: $white;
     border-radius: 100%;
     transition: all 0.2s ease;
     &:hover {
