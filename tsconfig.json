@@ -1,0 +1,26 @@
+{
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "esnext",
+        "declaration": false,
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "baseUrl": "./src",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "checkJs": false,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": false,
+        "forceConsistentCasingInFileNames": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+    }
+}

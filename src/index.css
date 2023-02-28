@@ -1,5 +1,5 @@
-@import "/partials/form/styles.css";
-@import "/partials/chatListItem/styles.css";
+@import "/components/form/styles.css";
+@import "/components/chatListItem/styles.css";
 @import "./vars.css";
 
 body {
