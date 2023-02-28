@@ -123,6 +123,13 @@ export class Block {
       }
     })
   }
+  _addEvents() {
+    const {events = {}} = this.props;
+
+    Object.keys(events).forEach(eventName => {
+      this._element?.addEventListener(eventName, events[eventName]);
+    });
+  }
 
   _createDocumentElement(tagName) {
     const element = document.createElement(tagName)

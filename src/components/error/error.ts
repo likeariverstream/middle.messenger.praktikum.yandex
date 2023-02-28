@@ -1,13 +1,10 @@
 import { Block } from "../../utils/block"
 import Handlebars from "handlebars"
 
-export interface Button {
+export interface Error {
     tagName: string
-    // text: string
     __id: string
-    // class: string
-    // type: string
-    events: {
+    events?: {
         click: () => void
     }
 }
@@ -15,9 +12,9 @@ type Props = {
     text: string
     class: string
     type: string
-    click: (e: Event) => void
+    click?: (e: Event) => void
 }
-export class Button extends Block {
+export class Error extends Block {
     constructor(tagName: string | undefined, props: Props) {
         super(tagName, {
             ...props, events: {
@@ -26,7 +23,6 @@ export class Button extends Block {
         })
     }
     render() {
-        this.element?.setAttribute('type', this.props.type)
         this._addEvents()
         const tagName = this.tagName
         const source = this.props.text
