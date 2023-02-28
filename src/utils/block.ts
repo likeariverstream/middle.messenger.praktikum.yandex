@@ -1,5 +1,4 @@
 import { EventBus } from "./event-bus"
-import Handlebars from "handlebars"
 import { v4 as makeUUID } from 'uuid'
 
 export type Meta = {
