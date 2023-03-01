@@ -1,5 +1,6 @@
-import { Block } from "../../utils/block"
+import { Block, Children } from "../../utils/block"
 import Handlebars from "handlebars"
+import { Input } from "components/input/input"
 
 export interface Button {
     tagName: string
@@ -25,12 +26,13 @@ export class Button extends Block {
             }
         })
     }
+
     render() {
         this.element?.setAttribute('type', this.props.type)
         this._addEvents()
         const tagName = this.tagName
         const source = this.props.text
         const template = Handlebars.compile(source)
-        return template({ tagName })
+        return template({tagName})
     }
-}   
+}
