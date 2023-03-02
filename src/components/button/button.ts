@@ -12,7 +12,8 @@ type Props = {
     text: string
     class: string
     type: string
-    click: (e: Event) => void
+    click?: (e: Event) => void
+    submit?: (e: SubmitEvent) => void
 }
 export class Button extends Block {
     constructor(tagName: string | undefined, props: Props) {
@@ -20,6 +21,7 @@ export class Button extends Block {
             ...props,
             events: {
                 click: props.click,
+                submit: props.submit,
             },
         })
     }

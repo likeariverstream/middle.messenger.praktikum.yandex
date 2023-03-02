@@ -4,15 +4,16 @@
 
 В проекте будет реализован мессенджер
 
-В данный момент используются Javascript, Handlebars, PostCSS, Express.js, Parcel.
-Верстка произведена по макету: ui/image.jpg
+В данный момент внедрен Typescript. Реализован блок и Event Bus, проект разделен на папки с компонентами и страницами. Настроена валидация, данные инпутов собираются в объект и выводятся в консоль. Добавлен Eslint, добавлен Stylelint и класс для работы с запросами.
 
 [Репозиторий](https://github.com/likeariverstream/middle.messenger.praktikum.yandex.git)
 
-[Посмотреть на netlify](https://eloquent-granita-6eb372.netlify.app/)
+[Netlify](https://eloquent-granita-6eb372.netlify.app/)
 
 ## Установка
 
 - `npm install` — установка стабильной версии,
-- `npm start` — запуск версии для разработчика,
-- `npm run build:` — сборка стабильной версии.
+- `npm run start` — запуск версии для разработчика,
+- `npm run build` — сборка стабильной версии.
+- `npm run eslint` — запуск Eslint.
+- `npm run stylelint` — запуск Stylelint.

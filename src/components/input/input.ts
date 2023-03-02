@@ -16,16 +16,21 @@ type Props = {
     class: string
     name: string
     focus: (e: Event) => void
-    change: (e: Event) => void
+    change?: (e: Event) => void
+    blur: (e: Event) => void
     value: string
+    pattern: string
 }
 export class Input extends Block {
+    value: string
+
     constructor(tagName: string | undefined, props: Props) {
         super(tagName, {
             ...props,
             events: {
                 focus: props.focus,
                 change: props.change,
+                blur: props.change,
             },
         })
     }
@@ -33,6 +38,8 @@ export class Input extends Block {
     render() {
         this.element?.setAttribute('name', this.props.name)
         this.element?.setAttribute('type', this.props.type)
+        this.element?.setAttribute('required', true.toString())
+        this.element?.setAttribute('pattern', this.props.pattern)
         this.element?.setAttribute('placeholder', this.props.placeholder)
         this._addEvents()
         const { tagName } = this

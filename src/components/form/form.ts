@@ -13,7 +13,7 @@ type Props = {
     id: string
     children: Children | Record<string, Block>
     class: string
-    submit: (e: Event) => void
+    submit?: (e: SubmitEvent) => void
 }
 export class Form extends Block {
     constructor(tagName: string | undefined, props: Props) {

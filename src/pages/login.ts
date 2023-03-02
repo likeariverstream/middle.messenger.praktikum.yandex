@@ -7,6 +7,11 @@ import { redirect } from '../utils/redirect'
 import { register } from './register'
 import { error404 } from './error404'
 import { chat } from './chat'
+import { ERRORS } from '../types/errors'
+import { PATTERNS } from '../types/patterns'
+import { Item } from '../components/item/item'
+import { validateInput } from '../utils/validate'
+import { getFormData } from '../utils/get-form-data'
 
 export const login = () => {
     const registerLink = new Link('a', {
@@ -30,17 +35,21 @@ export const login = () => {
     const button = new Button('button', {
         text: 'Войти',
         class: 'button',
-        type: 'button',
-        click: () => console.log('hi'),
+        type: 'submit',
     })
-    const emailInput = new Input('input', {
+    const loginInput = new Input('input', {
         type: 'text',
         value: '',
         placeholder: 'Введите логин',
         class: 'input',
         name: 'login',
-        focus: (e) => console.log(e.target),
-        change: (e) => console.log(e.target),
+        focus: (e) => validateInput(e, errorLogin),
+        blur: (e) => validateInput(e, errorLogin),
+        pattern: PATTERNS.login,
+    })
+    const errorLogin = new Item('span', {
+        text: ERRORS.login,
+        class: 'error-input',
     })
     const passwordInput = new Input('input', {
         type: 'password',
@@ -48,18 +57,26 @@ export const login = () => {
         placeholder: 'Введите пароль',
         class: 'input',
         name: 'password',
-        focus: (e) => console.log(e.target),
-        change: (e) => console.log(e.target),
+        focus: (e) => validateInput(e, errorPassword),
+        blur: (e) => validateInput(e, errorPassword),
+        pattern: PATTERNS.password,
+    })
+    const errorPassword = new Item('span', {
+        text: ERRORS.password,
+        class: 'error-input',
     })
     const form = new Form('form', {
         id: 'login-form',
         class: 'form',
+        submit: (e) => getFormData(e, '#login-form'),
         children: {},
-        submit: (e) => console.log(e),
     })
+
     renderDOM('#root', form)
-    renderDOM('#login-form', emailInput)
+    renderDOM('#login-form', loginInput)
+    renderDOM('#login-form', errorLogin)
     renderDOM('#login-form', passwordInput)
+    renderDOM('#login-form', errorPassword)
     renderDOM('#login-form', button)
     renderDOM('#login-form', registerLink)
     renderDOM('#login-form', page404Link)

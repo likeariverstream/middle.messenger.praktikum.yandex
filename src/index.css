@@ -200,3 +200,9 @@ body {
 .user {
     color: $white;
 }
+
+.error-input {
+    font-size: 12px;
+    color: 	#CE9177;
+    display: none;
+}

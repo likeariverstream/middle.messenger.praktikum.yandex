@@ -9,6 +9,10 @@ import { Input } from '../components/input/input'
 import { chatItem } from '../components/chat-item/chat-item'
 import { Error } from '../components/error/error'
 import { chats } from '../data/data'
+import { validateInput } from '../utils/validate'
+import { PATTERNS } from '../types/patterns'
+import { ERRORS } from '../types/errors'
+import { getFormData } from '../utils/get-form-data'
 
 export const chat = () => {
     const error = new Error('h4', {
@@ -57,7 +61,7 @@ export const chat = () => {
         text: 'Отправить',
         class: 'button',
         type: 'button',
-        click: () => console.log('hi'),
+        click: (e) => getFormData(e, '#input-message-container'),
     })
 
     const messageInput = new Input('input', {
@@ -66,8 +70,13 @@ export const chat = () => {
         placeholder: 'Введите сообщение',
         class: 'input-message',
         name: 'message',
-        focus: (e) => console.log(e.target),
-        change: (e) => console.log(e.target),
+        focus: (e) => validateInput(e, errorMessage),
+        blur: (e) => validateInput(e, errorMessage),
+        pattern: PATTERNS.message,
+    })
+    const errorMessage = new Item('span', {
+        text: ERRORS.message,
+        class: 'error-input',
     })
 
     renderDOM('#chat', sidePanel)
@@ -80,5 +89,6 @@ export const chat = () => {
     renderDOM('#content', error)
     renderDOM('#content', messageContainer)
     renderDOM('#input-message-container', messageInput)
+    renderDOM('#input-message-container', errorMessage)
     renderDOM('#input-message-container', button)
 }

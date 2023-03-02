@@ -4,11 +4,18 @@
   "engines": {
     "node": "v16.0.0"
   },
+  "targets": {
+    "app": {
+      "engines": {
+        "browsers": "> 0.25%"
+      },
+      "context": "browser"
+    }
+  },
   "scripts": {
     "dev": "parcel src/index.hbs --no-cache",
     "build": "parcel build src/index.hbs --no-cache",
     "start": "npm run build && node server.js",
-    "ts": "tsc --noEmit -p .",
     "eslint": "eslint .",
     "stylelint": "stylelint ."
   },
