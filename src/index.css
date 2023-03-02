@@ -1,4 +1,4 @@
-@import "./vars.css";
+@import url("./vars.css");
 
 body {
     background: $background-black;
@@ -33,7 +33,6 @@ body {
 .list {
     display: flex;
     flex-direction: column;
-    width: 50%;
     gap: 8px;
     overflow: auto;
     max-height: 960px;
@@ -61,6 +60,7 @@ body {
     height: 32px;
     outline: 1px solid $white;
     border-radius: 8px;
+
         &:focus {
             border: 1px solid blue;
             background: $background-black;
@@ -71,17 +71,18 @@ body {
 .chat-nav {
     display: flex;
     justify-content: space-between;
-    align-item: center;
+    align-items: center;
     width: 100%;
 }
 
 .button {
-    color: #D4D4D4;
+    color: #d4d4d4;
     margin: 0;
     border: 0;
     background: $white;
     border-radius: 4px;
     transition: all 0.2s ease;
+
     &:hover {
         cursor: pointer;
         opacity: .7;
@@ -95,6 +96,7 @@ body {
     background: $white;
     border-radius: 100%;
     transition: all 0.2s ease;
+
     &:hover {
         cursor: pointer;
         opacity: .7;
@@ -102,7 +104,7 @@ body {
 }
 
 .side-panel {
-    margin: 16px 0 16px 0;
+    margin: 16px 0;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -121,6 +123,7 @@ body {
     gap: 12px;
     border: 1px solid $white;
     transition: cubic-bezier(0.23, 1, 0.320, 1);
+
     &:hover {
         box-shadow: 1px 1px 1px 1px $white;
     }
@@ -131,18 +134,21 @@ body {
     border-radius: 4px;
     width: 280px;
     color: $white;
+
     &:focus {
         outline: 1px solid $blue;
         background: $background-black;
     }
+
     &_profile {
         border: none;
         border-bottom: 1px solid $blue;
         border-radius: 4px;
         outline: none;
+
         &:focus {
             color: $white;
-            outline-bottom: 1px solid $blue;
+            border-bottom: 1px solid $blue;
             background: $background-black;
         }
     } 
@@ -152,11 +158,13 @@ body {
     color: $white;
     text-decoration: none;
     transition: all 0.2s ease;
+
     &:hover {
         cursor: pointer;
         opacity: .7;
     } 
 }
+
 .item {
     width: 320px;
     display: flex;
@@ -165,7 +173,7 @@ body {
     border-radius: 4px;
     align-items: center;
     outline: 1px solid $white;
-    padding: 16px 12px 16px 12px;
+    padding: 16px 12px;
 }
 
 .container {

@@ -34,6 +34,7 @@
         "no-shadow": "off",
         "class-methods-use-this": "off",
         "prefer-promise-reject-errors": "off",
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "no-restricted-globals": "off"
     }
 }

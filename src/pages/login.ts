@@ -9,7 +9,7 @@ import { error404 } from './error404'
 import { chat } from './chat'
 
 export const login = () => {
-    const profileLink = new Link('a', {
+    const registerLink = new Link('a', {
         class: 'link',
         click: (e) => redirect(e, '#root', 'register', register, 'main'),
         href: '/register',
@@ -33,7 +33,6 @@ export const login = () => {
         type: 'button',
         click: () => console.log('hi'),
     })
-
     const emailInput = new Input('input', {
         type: 'text',
         value: '',
@@ -62,7 +61,7 @@ export const login = () => {
     renderDOM('#login-form', emailInput)
     renderDOM('#login-form', passwordInput)
     renderDOM('#login-form', button)
-    renderDOM('#login-form', profileLink)
+    renderDOM('#login-form', registerLink)
     renderDOM('#login-form', page404Link)
     renderDOM('#login-form', chatLink)
 }
