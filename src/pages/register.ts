@@ -6,24 +6,26 @@ import { Input } from "../components/input/input"
 import { redirect } from "../utils/redirect"
 import { login } from "./login"
 import { error500 } from "./error500"
+import { chat } from "./chat"
 
 export const register = () => {
+    const currentPage = '#register'
 
     const loginPageLink = new Link('a', {
         class: 'link',
-        click: (e) => redirect(e, '#register', 'root', login),
+        click: (e) => redirect(e, currentPage, 'root', login, 'main'),
         href: './',
         text: 'Вернуться назад?'
     })
     const chatPageLink = new Link('a', {
         class: 'link',
-        click: () => console.log('Chat'),
+        click: (e) => redirect(e, currentPage, 'chat', chat, 'chat'),
         href: './chat',
         text: 'Попробовать бесплатно'
     })
     const page500Link = new Link('a', {
         class: 'link',
-        click: (e) => redirect(e, '#register', 'error500', error500),
+        click: (e) => redirect(e, currentPage, 'error500', error500, 'main'),
         href: './500',
         text: 'Или посмотреть еще варианты'
     })

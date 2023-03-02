@@ -5,6 +5,7 @@ import { Form } from "../components/form/form"
 import { renderDOM } from "../utils/render"
 import { Input } from "../components/input/input"
 import { redirect } from "../utils/redirect"
+import { chat } from "./chat"
 
 export const profile = () => {
     const avatar = new Avatar('div', {
@@ -13,7 +14,7 @@ export const profile = () => {
     })
     const chatLink = new Link('a', {
         class: 'link',
-        click: () => console.log('Chat'),
+        click: (e) => redirect(e, '#profile', 'chat', chat, 'chat'),
         href: './chat',
         text: 'Вернуться назад?'
     })
