@@ -10,5 +10,4 @@ export const redirect: Redirect = (e, id, newId, callback, className) => {
         root.classList.add(className)
         callback()
     }
-
 }

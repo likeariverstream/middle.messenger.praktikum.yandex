@@ -1,5 +1,5 @@
-import { Block } from "../../utils/block"
-import Handlebars from "handlebars"
+import Handlebars from 'handlebars'
+import { Block } from '../../utils/block'
 
 export interface Error {
     tagName: string
@@ -11,14 +11,14 @@ type Props = {
 }
 export class Error extends Block {
     constructor(tagName: string | undefined, props: Props) {
-        super(tagName, {
-            ...props})
+        super(tagName, { ...props })
     }
+
     render() {
         this._addEvents()
-        const tagName = this.tagName
+        const { tagName } = this
         const source = this.props.text
         const template = Handlebars.compile(source)
         return template({ tagName })
     }
-}   
+}

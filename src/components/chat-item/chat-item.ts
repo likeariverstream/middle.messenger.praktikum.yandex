@@ -1,46 +1,47 @@
-import { Item } from "../item/item"
-import { renderDOM } from "../../utils/render"
+import { Item } from '../item/item'
+import { renderDOM } from '../../utils/render'
 
 type Chat = { title: string, time: string, sender: string, message: string }
 
 export const chatItem = (root: string, chats: Chat[]) => {
-
     chats.forEach((chat, index) => {
-        const { title, time, sender, message } = chat
+        const {
+            title, time, sender, message,
+        } = chat
         const listItem = new Item('li', {
             id: `item-${index}`,
             text: '',
-            class: 'item'
+            class: 'item',
         })
         const titleContainer = new Item('div', {
             id: `title-container-${index}`,
             text: '',
-            class: 'container'
+            class: 'container',
         })
         const nameChat = new Item('h4', {
             id: `title-${index}`,
             text: `${title}`,
-            class: 'title'
+            class: 'title',
         })
         const timeOfTheLastMessage = new Item('p', {
             id: `time-${index}`,
             text: `${time}`,
-            class: 'time'
+            class: 'time',
         })
         const messageContainer = new Item('div', {
             id: `message-container-${index}`,
             text: '',
-            class: 'container'
+            class: 'container',
         })
         const senderОfTheLastMessage = new Item('p', {
             id: `user-${index}`,
             class: 'user',
-            text: `${sender}`
+            text: `${sender}`,
         })
         const lastMessage = new Item('p', {
             id: `message-${index}`,
             class: 'message',
-            text: `${message}`
+            text: `${message}`,
         })
         renderDOM(root, listItem)
         renderDOM(`#item-${index}`, titleContainer)

@@ -1,5 +1,5 @@
-import { login } from "./pages/login"
+import { login } from './pages/login'
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     login()
 })

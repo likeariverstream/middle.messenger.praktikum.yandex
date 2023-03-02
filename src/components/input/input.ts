@@ -1,5 +1,5 @@
-import { Block } from "../../utils/block"
-import Handlebars from "handlebars"
+import Handlebars from 'handlebars'
+import { Block } from '../../utils/block'
 
 export interface Input {
     tagName: string
@@ -22,20 +22,22 @@ type Props = {
 export class Input extends Block {
     constructor(tagName: string | undefined, props: Props) {
         super(tagName, {
-            ...props, events: {
+            ...props,
+            events: {
                 focus: props.focus,
-                change: props.change
-            }
+                change: props.change,
+            },
         })
     }
+
     render() {
         this.element?.setAttribute('name', this.props.name)
         this.element?.setAttribute('type', this.props.type)
         this.element?.setAttribute('placeholder', this.props.placeholder)
         this._addEvents()
-        const tagName = this.tagName
+        const { tagName } = this
         const source = ''
         const template = Handlebars.compile(source)
         return template({ tagName })
     }
-}   
+}

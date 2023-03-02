@@ -8,7 +8,8 @@
     "dev": "parcel src/index.hbs --no-cache",
     "build": "parcel build src/index.hbs --no-cache",
     "start": "npm run build && node server.js",
-    "ts": "tsc --noEmit -p ."
+    "ts": "tsc --noEmit -p .",
+    "eslint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,10 @@
     "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
     "@parcel/transformer-inline-string": "^2.8.3",
     "@types/uuid": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "eslint-config-airbnb": "^19.0.4",
     "parcel": "^2.8.3",
     "postcss": "^8.4.21",
     "postcss-import": "^15.1.0",

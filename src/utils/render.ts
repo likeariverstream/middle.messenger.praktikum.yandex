@@ -1,8 +1,7 @@
-
 type RenderDOM = (query: string, block: {
     getContent: () => Node,
     dispatchComponentDidMount: () => void
-}) => Node | null;
+}) => Element | undefined;
 
 export const renderDOM: RenderDOM = (query, block) => {
     const root = document.querySelector(query)
@@ -11,5 +10,5 @@ export const renderDOM: RenderDOM = (query, block) => {
         block.dispatchComponentDidMount()
         return root
     }
-    return null
+    return undefined
 }

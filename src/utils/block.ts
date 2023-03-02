@@ -1,6 +1,6 @@
-import { EventBus } from "./event-bus"
 import { v4 as makeUUID } from 'uuid'
-import Handlebars, { template } from "handlebars"
+import Handlebars, { template } from 'handlebars'
+import { EventBus } from './event-bus'
 
 type Meta = {
     tagName: string
@@ -12,28 +12,38 @@ export type Props = {
     (): () => void
 }
 export type Children = Block | Block[] | {}
+
 export class Block {
     static EVENTS = {
-        INIT: "init",
-        FLOW_CDM: "flow:component-did-mount",
-        FLOW_CDU: "flow:component-did-update",
-        FLOW_RENDER: "flow:render"
+        INIT: 'init',
+        FLOW_CDM: 'flow:component-did-mount',
+        FLOW_CDU: 'flow:component-did-update',
+        FLOW_RENDER: 'flow:render',
     }
+
     _id: null | string = null
+
     id = this._id
+
     _element: null | HTMLElement = null
+
     _meta: Meta | null = null
+
     children: Children = {}
+
     props: Props
+
     propsAndChildren: Children & Props
+
     eventBus: () => EventBus
-    constructor(tagName = "div", propsAndChildren = {}) {
+
+    constructor(tagName = 'div', propsAndChildren = {}) {
         const { children, props } = this._getChildren(propsAndChildren)
         this.children = children
         const eventBus = new EventBus()
         this._meta = {
             tagName,
-            props
+            props,
         }
         this._id = makeUUID()
         this.props = this._makePropsProxy({ ...props, __id: this._id })
@@ -63,17 +73,19 @@ export class Block {
     _componentDidMount() {
         this.componentDidMount(this.props)
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER, this.props)
-        Object.values(this.children).forEach(child => {
+        Object.values(this.children).forEach((child) => {
             child.dispatchComponentDidMount()
         })
     }
 
     componentDidMount(oldProps) {
-
+        console.log(oldProps)
     }
+
     emit(event) {
-
+        console.log(event)
     }
+
     dispatchComponentDidMount() {
         this.emit(Block.EVENTS.FLOW_CDM)
     }
@@ -86,15 +98,18 @@ export class Block {
     }
 
     componentDidUpdate(oldProps, newProps) {
+        if (oldProps && newProps) {
+            return true
+        }
         return true
     }
 
-    setProps = nextProps => {
+    setProps = (nextProps) => {
         if (!nextProps) {
             return
         }
         Object.assign(this.props, nextProps)
-    };
+    }
 
     get element() {
         return this._element
@@ -107,6 +122,7 @@ export class Block {
         this._element?.append(block)
         this._addEvents()
     }
+
     _getChildren(propsAndChildren) {
         const children = {}
         const props = {}
@@ -117,7 +133,7 @@ export class Block {
             } else {
                 props[key] = value
             }
-        });
+        })
 
         return { children, props }
     }
@@ -146,29 +162,29 @@ export class Block {
 
     _makePropsProxy(props) {
         return new Proxy(props, {
-            get: (target, p, receiver) => {
-                return typeof target[p] === "function" ? target[p].bind(target) : target[p]
-            },
-            set: (target, p, value, receiver) => {
-                target[p] = value;
+            get: (target, p) => (typeof target[p] === 'function'
+                ? target[p].bind(target) : target[p]),
+            set: (target/* , p, value */) => {
+                // target[p] = value
                 this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target })
                 return true
             },
-            deleteProperty(target, name) {
+            deleteProperty(/* target, name */) {
                 throw new Error('Нет доступа')
-            }
+            },
         })
     }
+
     _addEvents() {
         const { events = {} } = this.props
-        Object.keys(events).forEach(eventName => {
+        Object.keys(events).forEach((eventName) => {
             this._element?.addEventListener(eventName, events[eventName])
         })
     }
 
     _removeEvents() {
         const { events = {} } = this.props
-        Object.keys(events).forEach(eventName => {
+        Object.keys(events).forEach((eventName) => {
             this._element?.removeEventListener(eventName, events[eventName])
         })
     }
@@ -180,10 +196,10 @@ export class Block {
     }
 
     show() {
-        this.getContent().style.display = "block"
+        this.getContent().style.display = 'block'
     }
 
     hide() {
-        this.getContent().style.display = "none"
+        this.getContent().style.display = 'none'
     }
 }

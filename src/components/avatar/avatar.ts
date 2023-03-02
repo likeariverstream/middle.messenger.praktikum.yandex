@@ -1,5 +1,5 @@
-import { Block } from "../../utils/block"
-import Handlebars from "handlebars"
+import Handlebars from 'handlebars'
+import { Block } from '../../utils/block'
 
 export interface Avatar {
     tagName: string
@@ -18,16 +18,18 @@ type Props = {
 export class Avatar extends Block {
     constructor(tagName: string | undefined, props: Props) {
         super(tagName, {
-            ...props, events: {
-                click: props.click
-            }
+            ...props,
+            events: {
+                click: props.click,
+            },
         })
     }
+
     render() {
         this._addEvents()
-        const tagName = this.tagName
+        const { tagName } = this
         const source = ''
         const template = Handlebars.compile(source)
         return template({ tagName })
     }
-}   
+}

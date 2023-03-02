@@ -1,3 +1,1 @@
-module.exports = {
-    partials: "src/components/"
-}
+module.exports = { partials: 'src/components/' }
