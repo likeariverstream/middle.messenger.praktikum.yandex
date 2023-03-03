@@ -16,6 +16,7 @@
     "dev": "parcel src/index.hbs --no-cache",
     "build": "parcel build src/index.hbs --no-cache",
     "start": "npm run build && node server.js",
+    "typescript": "tsc --noEmit",
     "eslint": "eslint .",
     "stylelint": "stylelint ."
   },
