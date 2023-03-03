@@ -2,9 +2,6 @@
     "include": [
         "src"
     ],
-    "exclude": [
-        "node_modules"
-    ],
     "compilerOptions": {
         "outDir": "dist",
         "target": "esnext",
@@ -24,5 +21,10 @@
         "noImplicitAny": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-    }
+    },
+    "exclude": [
+        "node_modules",
+        ".parcel-cache",
+        "dist"
+    ],
 }
