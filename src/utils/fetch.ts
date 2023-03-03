@@ -13,10 +13,10 @@ type Options = {
         [key: string]: string
     }
 }
-type OptionsWithoutMethod = Omit<Options, 'method'>
+// type OptionsWithoutMethod = Omit<Options, 'method'>
 type Fetch = (url: string, options?: Options, timeout?: number) => Promise<XMLHttpRequest>
 
-const queryStringify = (data: OptionsWithoutMethod) => {
+const queryStringify = (data: Options['data']) => {
     if (typeof data !== 'object') {
         throw new Error('Data must be object')
     }

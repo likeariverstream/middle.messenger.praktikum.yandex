@@ -1,5 +1,5 @@
 export class EventBus {
-    listeners: {}
+    listeners: Record<string, (() => void)[]>
 
     constructor() {
         this.listeners = {}

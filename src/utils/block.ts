@@ -52,7 +52,7 @@ export class Block {
         eventBus.emit(Block.EVENTS.INIT, this.props)
     }
 
-    _registerEvents(eventBus) {
+    _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this))
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
@@ -78,11 +78,11 @@ export class Block {
         })
     }
 
-    componentDidMount(oldProps) {
+    componentDidMount(oldProps: Props) {
         console.log(oldProps)
     }
 
-    emit(event) {
+    emit(event: string) {
         console.log(event)
     }
 
@@ -90,21 +90,21 @@ export class Block {
         this.emit(Block.EVENTS.FLOW_CDM)
     }
 
-    _componentDidUpdate(oldProps, newProps) {
+    _componentDidUpdate(oldProps: Props, newProps: Props) {
         const response = this.componentDidUpdate(oldProps, newProps)
         if (response) {
             this.eventBus().emit(Block.EVENTS.FLOW_RENDER, this.props)
         }
     }
 
-    componentDidUpdate(oldProps, newProps) {
+    componentDidUpdate(oldProps: any, newProps: any) {
         if (oldProps && newProps) {
             return true
         }
         return true
     }
 
-    setProps = (nextProps) => {
+    setProps = (nextProps: Props) => {
         if (!nextProps) {
             return
         }
@@ -123,9 +123,9 @@ export class Block {
         this._addEvents()
     }
 
-    _getChildren(propsAndChildren) {
-        const children = {}
-        const props = {}
+    _getChildren(propsAndChildren: any) {
+        const children: {[key: string]: any} = {}
+        const props: {[key: string]: any} = {}
 
         Object.entries(propsAndChildren).forEach(([key, value]) => {
             if (value instanceof Block) {
@@ -138,7 +138,7 @@ export class Block {
         return { children, props }
     }
 
-    compile(template, props) {
+    compile(template: any, props: any) {
         const propsAndStubs = { ...props }
         Object.entries(this.children).forEach(([key, child]) => {
             propsAndStubs[key] = `<div data-id="${child.id}"></div>`
@@ -160,7 +160,7 @@ export class Block {
         return this.element!
     }
 
-    _makePropsProxy(props) {
+    _makePropsProxy(props: any) {
         return new Proxy(props, {
             get: (target, p) => (typeof target[p] === 'function'
                 ? target[p].bind(target) : target[p]),
@@ -176,20 +176,20 @@ export class Block {
     }
 
     _addEvents() {
-        const { events = {} } = this.props
+        const { events = {} }: {[key: string]: any} = this.props
         Object.keys(events).forEach((eventName) => {
             this._element?.addEventListener(eventName, events[eventName])
         })
     }
 
     _removeEvents() {
-        const { events = {} } = this.props
+        const { events = {} }: {[key: string]: any} = this.props
         Object.keys(events).forEach((eventName) => {
             this._element?.removeEventListener(eventName, events[eventName])
         })
     }
 
-    _createDocumentElement(tagName) {
+    _createDocumentElement(tagName: any) {
         const element = document.createElement(tagName)
         element.setAttribute('data-id', this._id)
         return element
