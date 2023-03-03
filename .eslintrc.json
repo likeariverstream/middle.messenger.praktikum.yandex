@@ -36,6 +36,7 @@
         "prefer-promise-reject-errors": "off",
         "no-use-before-define": "off",
         "no-restricted-globals": "off",
-        "no-useless-escape": "off"
+        "no-useless-escape": "off",
+        "no-param-reassign": "off"
     }
 }

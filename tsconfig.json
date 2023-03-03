@@ -12,7 +12,11 @@
         "strictNullChecks": true,
         "sourceMap": true,
         "baseUrl": "./src",
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
         "allowJs": true,
         "checkJs": false,
         "skipLibCheck": true,
@@ -22,5 +26,8 @@
         "forceConsistentCasingInFileNames": true,
         "module": "esnext",
         "moduleResolution": "node",
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
     }
 }

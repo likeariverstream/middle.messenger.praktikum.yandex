@@ -1,24 +1,26 @@
+import { Props } from './block'
+
 export class EventBus {
-    listeners: {}
+    listeners: { [event: string]: Array<(props: any) => void> }
 
     constructor() {
         this.listeners = {}
     }
 
-    on(event: string, callback: () => void) {
+    on(event: string, callback: (props: Props, newProps?: Props) => void) {
         if (!this.listeners[event]) {
             this.listeners[event] = []
         }
         this.listeners[event].push(callback)
     }
 
-    off(event: string, callback: () => void) {
+    off(event: string, callback: (props: Props) => void) {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`)
         }
 
         this.listeners[event] = this.listeners[event].filter(
-            (listener: () => void) => listener !== callback,
+            (listener: (props: Props) => void) => listener !== callback,
         )
     }
 

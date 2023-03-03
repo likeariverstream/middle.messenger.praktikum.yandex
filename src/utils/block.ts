@@ -2,17 +2,17 @@ import { v4 as makeUUID } from 'uuid'
 import Handlebars, { template } from 'handlebars'
 import { EventBus } from './event-bus'
 
+export type Props = {
+    [key: string]: any
+    (): () => void
+    (): (props: void) => void
+}
+export type Children = Block | Block[] | {}
 type Meta = {
     tagName: string
     props: {}
 }
-export type Props = {
-    [key: string]: string
-    id: string
-    (): () => void
-}
-export type Children = Block | Block[] | {}
-
+type PropsAndChildren = Props | Children
 export class Block {
     static EVENTS = {
         INIT: 'init',
@@ -33,11 +33,11 @@ export class Block {
 
     props: Props
 
-    propsAndChildren: Children & Props
+    propsAndChildren: PropsAndChildren = {}
 
     eventBus: () => EventBus
 
-    constructor(tagName = 'div', propsAndChildren = {}) {
+    constructor(tagName = 'div', propsAndChildren: PropsAndChildren = {}) {
         const { children, props } = this._getChildren(propsAndChildren)
         this.children = children
         const eventBus = new EventBus()
@@ -46,13 +46,13 @@ export class Block {
             props,
         }
         this._id = makeUUID()
-        this.props = this._makePropsProxy({ ...props, __id: this._id })
+        this.props = this._makePropsProxy({ ...props, _id: this._id })
         this.eventBus = () => eventBus
         this._registerEvents(eventBus)
         eventBus.emit(Block.EVENTS.INIT, this.props)
     }
 
-    _registerEvents(eventBus) {
+    _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this))
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
@@ -78,11 +78,11 @@ export class Block {
         })
     }
 
-    componentDidMount(oldProps) {
+    componentDidMount(oldProps: Props) {
         console.log(oldProps)
     }
 
-    emit(event) {
+    emit(event: string) {
         console.log(event)
     }
 
@@ -90,21 +90,19 @@ export class Block {
         this.emit(Block.EVENTS.FLOW_CDM)
     }
 
-    _componentDidUpdate(oldProps, newProps) {
+    _componentDidUpdate(oldProps: Props, newProps: Props): void {
         const response = this.componentDidUpdate(oldProps, newProps)
         if (response) {
             this.eventBus().emit(Block.EVENTS.FLOW_RENDER, this.props)
         }
     }
 
-    componentDidUpdate(oldProps, newProps) {
-        if (oldProps && newProps) {
-            return true
-        }
+    componentDidUpdate(oldProps: Props, newProps: Props) {
+        console.log(oldProps, newProps)
         return true
     }
 
-    setProps = (nextProps) => {
+    setProps = (nextProps: Props) => {
         if (!nextProps) {
             return
         }
@@ -123,12 +121,12 @@ export class Block {
         this._addEvents()
     }
 
-    _getChildren(propsAndChildren) {
-        const children = {}
-        const props = {}
+    _getChildren(propsAndChildren: PropsAndChildren) {
+        const children: { [key: string]: string } = {}
+        const props: { [key: string]: string } = {}
 
         Object.entries(propsAndChildren).forEach(([key, value]) => {
-            if (value instanceof Block) {
+            if (value) {
                 children[key] = value
             } else {
                 props[key] = value
@@ -138,7 +136,7 @@ export class Block {
         return { children, props }
     }
 
-    compile(template, props) {
+    compile(template: any, props: Props) {
         const propsAndStubs = { ...props }
         Object.entries(this.children).forEach(([key, child]) => {
             propsAndStubs[key] = `<div data-id="${child.id}"></div>`
@@ -160,12 +158,12 @@ export class Block {
         return this.element!
     }
 
-    _makePropsProxy(props) {
+    _makePropsProxy(props: any) {
         return new Proxy(props, {
             get: (target, p) => (typeof target[p] === 'function'
                 ? target[p].bind(target) : target[p]),
-            set: (target/* , p, value */) => {
-                // target[p] = value
+            set: (target, p, value) => {
+                target[p] = value
                 this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target })
                 return true
             },
@@ -189,7 +187,7 @@ export class Block {
         })
     }
 
-    _createDocumentElement(tagName) {
+    _createDocumentElement(tagName: any) {
         const element = document.createElement(tagName)
         element.setAttribute('data-id', this._id)
         return element

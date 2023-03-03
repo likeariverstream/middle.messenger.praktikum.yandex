@@ -1,4 +1,5 @@
 export const getFormData = (e: Event | SubmitEvent, id: string): void => {
+    e.preventDefault()
     const form = document.querySelector(id)
     if (form) {
         const inputs = form.querySelectorAll('input')
