@@ -26,7 +26,6 @@ export class Link extends Block {
 
     render() {
         this.element?.setAttribute('href', this.props.href)
-        this._addEvents()
         const { tagName } = this
         const source = this.props.text
         const template = Handlebars.compile(source)

@@ -30,7 +30,7 @@ export class Input extends Block {
             events: {
                 focus: props.focus,
                 change: props.change,
-                blur: props.change,
+                blur: props.blur,
             },
         })
     }
@@ -41,7 +41,6 @@ export class Input extends Block {
         this.element?.setAttribute('required', true.toString())
         this.element?.setAttribute('pattern', this.props.pattern)
         this.element?.setAttribute('placeholder', this.props.placeholder)
-        this._addEvents()
         const { tagName } = this
         const source = ''
         const template = Handlebars.compile(source)

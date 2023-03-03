@@ -26,7 +26,6 @@ export class Avatar extends Block {
     }
 
     render() {
-        this._addEvents()
         const { tagName } = this
         const source = ''
         const template = Handlebars.compile(source)

@@ -25,7 +25,6 @@ export class Item extends Block {
     }
 
     render() {
-        this._addEvents()
         const { tagName } = this
         this.element?.setAttribute('id', this.props.id)
         const source = this.props.text

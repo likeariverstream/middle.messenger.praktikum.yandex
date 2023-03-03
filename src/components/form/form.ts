@@ -26,7 +26,6 @@ export class Form extends Block {
     }
 
     render() {
-        this._addEvents()
         this.element?.setAttribute('id', this.props.id)
         const { tagName } = this
         const source = ''

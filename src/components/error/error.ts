@@ -15,7 +15,6 @@ export class Error extends Block {
     }
 
     render() {
-        this._addEvents()
         const { tagName } = this
         const source = this.props.text
         const template = Handlebars.compile(source)

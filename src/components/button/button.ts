@@ -28,7 +28,6 @@ export class Button extends Block {
 
     render() {
         this.element?.setAttribute('type', this.props.type)
-        this._addEvents()
         const { tagName } = this
         const source = this.props.text
         const template = Handlebars.compile(source)
