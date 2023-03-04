@@ -1,0 +1,10 @@
+/node_modules
+/dist
+/.parcel-cache
+/.github
+*.ts
+*.js
+*.json
+*.toml
+*.md
+*.hbs

@@ -4,10 +4,21 @@
   "engines": {
     "node": "v16.0.0"
   },
+  "targets": {
+    "app": {
+      "engines": {
+        "browsers": "> 0.25%"
+      },
+      "context": "browser"
+    }
+  },
   "scripts": {
-    "dev": "parcel src/index.hbs --no-cache",
+    "dev": "parcel src/index.hbs --no-cache --open",
     "build": "parcel build src/index.hbs --no-cache",
-    "start": "npm run build && node server.js"
+    "start": "npm run build && node server.js",
+    "typescript": "tsc --noEmit",
+    "eslint": "eslint .",
+    "stylelint": "stylelint ."
   },
   "repository": {
     "type": "git",
@@ -17,15 +28,27 @@
   "author": "Sergey Kalachev",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
-    "parcel": "^2.8.3",
-    "postcss": "^8.4.21",
-    "postcss-import": "^15.1.0",
-    "postcss-nested": "^6.0.0"
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
+    "@parcel/transformer-inline-string": "2.8.3",
+    "@types/uuid": "9.0.1",
+    "@typescript-eslint/eslint-plugin": "5.54.0",
+    "@typescript-eslint/parser": "5.54.0",
+    "eslint": "8.35.0",
+    "eslint-config-airbnb": "19.0.4",
+    "parcel": "2.8.3",
+    "postcss": "8.4.21",
+    "postcss-import": "15.1.0",
+    "postcss-nested": "6.0.0",
+    "postcss-simple-vars": "7.0.1",
+    "stylelint": "15.2.0",
+    "stylelint-config-standard": "30.0.1",
+    "ts-node": "10.9.1",
+    "typescript": "4.9.5"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "handlebars": "^4.7.7"
+    "express": "4.18.2",
+    "handlebars": "4.7.7",
+    "uuid": "9.0.0"
   }
 }
