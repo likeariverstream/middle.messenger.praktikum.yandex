@@ -3,10 +3,7 @@ import { Block } from '../../utils/block'
 
 export interface Avatar {
     tagName: string
-    // text: string
     __id: string
-    // class: string
-    // type: string
     events: {
         click: () => void
     }
