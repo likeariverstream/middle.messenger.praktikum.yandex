@@ -7,8 +7,8 @@ import { renderDOM } from '../utils/render'
 import { Input } from '../components/input/input'
 import { redirect } from '../utils/redirect'
 import { chat } from './chat'
-import { PATTERNS } from '../types/patterns'
-import { ERRORS } from '../types/errors'
+import { Patterns } from '../types/patterns'
+import { Errors } from '../types/errors'
 import { validateInput, validateForm } from '../utils/validate'
 import { getFormData } from '../utils/get-form-data'
 
@@ -37,10 +37,10 @@ export const profile = () => {
         name: 'first_name',
         focus: (e) => validateInput(e, errorFirstName),
         blur: (e) => validateInput(e, errorFirstName),
-        pattern: PATTERNS.name,
+        pattern: Patterns.name,
     })
     const errorFirstName = new Item('span', {
-        text: ERRORS.name,
+        text: Errors.name,
         class: 'error-input',
     })
     const secondNameInput = new Input('input', {
@@ -51,10 +51,10 @@ export const profile = () => {
         name: 'second_name',
         focus: (e) => validateInput(e, errorSecondName),
         blur: (e) => validateInput(e, errorSecondName),
-        pattern: PATTERNS.name,
+        pattern: Patterns.name,
     })
     const errorSecondName = new Item('span', {
-        text: ERRORS.name,
+        text: Errors.name,
         class: 'error-input',
     })
     const displayNameInput = new Input('input', {
@@ -65,10 +65,10 @@ export const profile = () => {
         name: 'display_name',
         focus: (e) => validateInput(e, errorDisplayName),
         blur: (e) => validateInput(e, errorDisplayName),
-        pattern: PATTERNS.name,
+        pattern: Patterns.name,
     })
     const errorDisplayName = new Item('span', {
-        text: ERRORS.name,
+        text: Errors.name,
         class: 'error-input',
     })
     const loginInput = new Input('input', {
@@ -79,10 +79,10 @@ export const profile = () => {
         name: 'login',
         focus: (e) => validateInput(e, errorLogin),
         blur: (e) => validateInput(e, errorLogin),
-        pattern: PATTERNS.login,
+        pattern: Patterns.login,
     })
     const errorLogin = new Item('span', {
-        text: ERRORS.login,
+        text: Errors.login,
         class: 'error-input',
     })
     const emailInput = new Input('input', {
@@ -93,10 +93,10 @@ export const profile = () => {
         name: 'email',
         focus: (e) => validateInput(e, errorEmail),
         blur: (e) => validateInput(e, errorEmail),
-        pattern: PATTERNS.email,
+        pattern: Patterns.email,
     })
     const errorEmail = new Item('span', {
-        text: ERRORS.email,
+        text: Errors.email,
         class: 'error-input',
     })
     const phoneInput = new Input('input', {
@@ -107,10 +107,10 @@ export const profile = () => {
         name: 'phone',
         focus: (e) => validateInput(e, errorPhone),
         blur: (e) => validateInput(e, errorPhone),
-        pattern: PATTERNS.phone,
+        pattern: Patterns.phone,
     })
     const errorPhone = new Item('span', {
-        text: ERRORS.phone,
+        text: Errors.phone,
         class: 'error-input',
     })
     const oldPasswordInput = new Input('input', {
@@ -121,10 +121,10 @@ export const profile = () => {
         name: 'oldPassword',
         focus: (e) => validateInput(e, errorOldPassword),
         blur: (e) => validateInput(e, errorOldPassword),
-        pattern: PATTERNS.password,
+        pattern: Patterns.password,
     })
     const errorOldPassword = new Item('span', {
-        text: ERRORS.password,
+        text: Errors.password,
         class: 'error-input',
     })
     const newPasswordInput = new Input('input', {
@@ -135,10 +135,10 @@ export const profile = () => {
         name: 'newPassword',
         focus: (e) => validateInput(e, errorNewPassword),
         blur: (e) => validateInput(e, errorNewPassword),
-        pattern: PATTERNS.password,
+        pattern: Patterns.password,
     })
     const errorNewPassword = new Item('span', {
-        text: ERRORS.password,
+        text: Errors.password,
         class: 'error-input',
     })
     const form = new Form('form', {
@@ -151,7 +151,7 @@ export const profile = () => {
         },
     })
     const errorForm = new Item('span', {
-        text: ERRORS.form,
+        text: Errors.form,
         class: 'error-input',
     })
     renderDOM('#profile', form)

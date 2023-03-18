@@ -1,4 +1,4 @@
-export enum PATTERNS {
+export enum Patterns {
     name = '^([А-Я]{1}[-а-яё]{1,}|[A-Z]{1}[-a-z]{1,})$',
     login = '^(?![0-9]+$)[a-zA-Z0-9 ]{3,20}$',
     email = '^[\\w-.]+\\@[\\w-]+[A-Za-z].[a-z]{2,4}$',

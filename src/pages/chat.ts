@@ -10,8 +10,8 @@ import { chatItem } from '../components/chat-item/chat-item'
 import { Error } from '../components/error/error'
 import { chats } from '../data/data'
 import { validateInput } from '../utils/validate'
-import { PATTERNS } from '../types/patterns'
-import { ERRORS } from '../types/errors'
+import { Patterns } from '../types/patterns'
+import { Errors } from '../types/errors'
 import { getFormData } from '../utils/get-form-data'
 
 export const chat = () => {
@@ -72,10 +72,10 @@ export const chat = () => {
         name: 'message',
         focus: (e) => validateInput(e, errorMessage),
         blur: (e) => validateInput(e, errorMessage),
-        pattern: PATTERNS.message,
+        pattern: Patterns.message,
     })
     const errorMessage = new Item('span', {
-        text: ERRORS.message,
+        text: Errors.message,
         class: 'error-input',
     })
 

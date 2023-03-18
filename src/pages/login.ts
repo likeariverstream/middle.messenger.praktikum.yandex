@@ -7,8 +7,8 @@ import { redirect } from '../utils/redirect'
 import { register } from './register'
 import { error404 } from './error404'
 import { chat } from './chat'
-import { ERRORS } from '../types/errors'
-import { PATTERNS } from '../types/patterns'
+import { Errors } from '../types/errors'
+import { Patterns } from '../types/patterns'
 import { Item } from '../components/item/item'
 import { validateInput } from '../utils/validate'
 import { getFormData } from '../utils/get-form-data'
@@ -45,10 +45,10 @@ export const login = () => {
         name: 'login',
         focus: (e) => validateInput(e, errorLogin),
         blur: (e) => validateInput(e, errorLogin),
-        pattern: PATTERNS.login,
+        pattern: Patterns.login,
     })
     const errorLogin = new Item('span', {
-        text: ERRORS.login,
+        text: Errors.login,
         class: 'error-input',
     })
     const passwordInput = new Input('input', {
@@ -59,10 +59,10 @@ export const login = () => {
         name: 'password',
         focus: (e) => validateInput(e, errorPassword),
         blur: (e) => validateInput(e, errorPassword),
-        pattern: PATTERNS.password,
+        pattern: Patterns.password,
     })
     const errorPassword = new Item('span', {
-        text: ERRORS.password,
+        text: Errors.password,
         class: 'error-input',
     })
     const form = new Form('form', {

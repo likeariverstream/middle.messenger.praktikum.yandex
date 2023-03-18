@@ -8,8 +8,8 @@ import { login } from './login'
 import { error500 } from './error500'
 import { chat } from './chat'
 import { Item } from '../components/item/item'
-import { PATTERNS } from '../types/patterns'
-import { ERRORS } from '../types/errors'
+import { Patterns } from '../types/patterns'
+import { Errors } from '../types/errors'
 import { validateInput } from '../utils/validate'
 import { getFormData } from '../utils/get-form-data'
 
@@ -47,10 +47,10 @@ export const register = () => {
         name: 'first_name',
         focus: (e) => validateInput(e, errorFirstName),
         blur: (e) => validateInput(e, errorFirstName),
-        pattern: PATTERNS.name,
+        pattern: Patterns.name,
     })
     const errorFirstName = new Item('span', {
-        text: ERRORS.name,
+        text: Errors.name,
         class: 'error-input',
     })
     const secondNameInput = new Input('input', {
@@ -61,10 +61,10 @@ export const register = () => {
         name: 'second_name',
         focus: (e) => validateInput(e, errorSecondName),
         blur: (e) => validateInput(e, errorSecondName),
-        pattern: PATTERNS.name,
+        pattern: Patterns.name,
     })
     const errorSecondName = new Item('span', {
-        text: ERRORS.name,
+        text: Errors.name,
         class: 'error-input',
     })
     const displayNameInput = new Input('input', {
@@ -75,10 +75,10 @@ export const register = () => {
         name: 'display_name',
         focus: (e) => validateInput(e, errorDisplayName),
         blur: (e) => validateInput(e, errorDisplayName),
-        pattern: PATTERNS.name,
+        pattern: Patterns.name,
     })
     const errorDisplayName = new Item('span', {
-        text: ERRORS.name,
+        text: Errors.name,
         class: 'error-input',
     })
     const loginInput = new Input('input', {
@@ -89,10 +89,10 @@ export const register = () => {
         name: 'login',
         focus: (e) => validateInput(e, errorLogin),
         blur: (e) => validateInput(e, errorLogin),
-        pattern: PATTERNS.login,
+        pattern: Patterns.login,
     })
     const errorLogin = new Item('span', {
-        text: ERRORS.login,
+        text: Errors.login,
         class: 'error-input',
     })
     const emailInput = new Input('input', {
@@ -103,10 +103,10 @@ export const register = () => {
         name: 'email',
         focus: (e) => validateInput(e, errorEmail),
         blur: (e) => validateInput(e, errorEmail),
-        pattern: PATTERNS.email,
+        pattern: Patterns.email,
     })
     const errorEmail = new Item('span', {
-        text: ERRORS.email,
+        text: Errors.email,
         class: 'error-input',
     })
 
@@ -118,10 +118,10 @@ export const register = () => {
         name: 'password',
         focus: (e) => validateInput(e, errorPassword),
         blur: (e) => validateInput(e, errorPassword),
-        pattern: PATTERNS.password,
+        pattern: Patterns.password,
     })
     const errorPassword = new Item('span', {
-        text: ERRORS.password,
+        text: Errors.password,
         class: 'error-input',
     })
     const phoneInput = new Input('input', {
@@ -132,10 +132,10 @@ export const register = () => {
         name: 'phone',
         focus: (e) => validateInput(e, errorPhone),
         blur: (e) => validateInput(e, errorPhone),
-        pattern: PATTERNS.phone,
+        pattern: Patterns.phone,
     })
     const errorPhone = new Item('span', {
-        text: ERRORS.phone,
+        text: Errors.phone,
         class: 'error-input',
     })
     const form = new Form('form', {
