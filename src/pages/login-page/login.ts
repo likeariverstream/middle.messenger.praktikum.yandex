@@ -52,7 +52,6 @@ export class LoginPage extends Block {
             .filter((child) => child instanceof Input)
             .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
         const data = Object.fromEntries(values)
-        console.log(data)
         AuthController.signin(data)
     }
 

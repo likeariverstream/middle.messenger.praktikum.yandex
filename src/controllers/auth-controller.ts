@@ -39,9 +39,7 @@ class AuthController {
     async logout() {
         try {
             MessagesController.closeAll()
-
             await this.api.logout()
-
             router.go('/')
         } catch (e: any) {
             console.error(e.message)
