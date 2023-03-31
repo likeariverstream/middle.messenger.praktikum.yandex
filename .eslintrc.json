@@ -37,6 +37,13 @@
         "no-use-before-define": "off",
         "no-restricted-globals": "off",
         "no-useless-escape": "off",
-        "no-constructor-return": "off"
+        "no-constructor-return": "off",
+        "no-param-reassign": "off",
+        "new-cap": "off",
+        "no-useless-constructor": "off",
+        "no-empty-function": "off",
+        "no-restricted-syntax": "off",
+        "no-prototype-builtins": "off",
+        "no-continue": "off"
     }
 }

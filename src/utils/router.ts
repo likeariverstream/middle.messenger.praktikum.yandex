@@ -1,71 +1,74 @@
-import { Block } from './block'
-import { Route } from './route'
+import { Route, BlockConstructable } from './route'
 
-export class Router {
-    routes: Route[] = []
+class Router {
+    private static __instance: Router
 
-    history: History = window.history
+    private routes: Route[] = []
 
-    _currentRoute: Route | null = null
+    private currentRoute: Route | null = null
 
-    _rootQuery: string
+    private history = window.history
 
-    static __instance: Router
-
-    constructor(rootQuery: string) {
+    constructor(private readonly rootQuery: string) {
         if (Router.__instance) {
             return Router.__instance
         }
+
         this.routes = []
-        this.history = window.history
-        // this._currentRoute = null;
-        this._rootQuery = rootQuery
+
         Router.__instance = this
     }
 
-    use(pathname: string, block: typeof Block) {
-        const route = new Route(pathname, block, { rootQuery: this._rootQuery })
+    public use(pathname: string, block: BlockConstructable) {
+        const route = new Route(pathname, block, this.rootQuery)
         this.routes.push(route)
+
         return this
     }
 
-    start() {
-        window.onpopstate = ((event: PopStateEvent) => {
-            if (event.currentTarget !== null) {
-                this._onRoute((event.currentTarget as Window).location.pathname)
-            }
-        })
+    public go(pathname: string) {
+        this.history.pushState({}, '', pathname)
+
+        this._onRoute(pathname)
+    }
+
+    public back() {
+        this.history.back()
+    }
+
+    public forward() {
+        this.history.forward()
+    }
+
+    public start() {
+        window.onpopstate = (event: PopStateEvent) => {
+            const target = event.currentTarget as Window
+
+            this._onRoute(target.location.pathname)
+        }
+
         this._onRoute(window.location.pathname)
     }
 
-    _onRoute(pathname: string) {
+    private _onRoute(pathname: string) {
         const route = this.getRoute(pathname)
+
         if (!route) {
             return
         }
 
-        if (this._currentRoute && this._currentRoute !== route) {
-            this._currentRoute.leave()
+        if (this.currentRoute && this.currentRoute !== route) {
+            this.currentRoute.leave()
         }
-        this._currentRoute = route
+
+        this.currentRoute = route
 
         route.render()
     }
 
-    go(pathname: string) {
-        this.history.pushState({}, '', pathname)
-        this._onRoute(pathname)
-    }
-
-    back() {
-        this.history.back()
-    }
-
-    forward() {
-        this.history.forward()
-    }
-
-    getRoute(pathname: string) {
+    private getRoute(pathname: string) {
         return this.routes.find((route) => route.match(pathname))
     }
 }
+
+export default new Router('#root')

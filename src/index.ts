@@ -1,5 +1,41 @@
-import { login } from './pages/login'
+import AuthController from './controllers/auth-controller'
+import { LoginPage } from './pages/login-page/login'
+import { RegisterPage } from './pages/register-page/register'
+import { MessengerPage } from './pages/messenger-page/messenger'
+import { ProfilePage } from './pages/profile-page/profile'
+import { Routes } from './types/routes'
+import Router from './utils/router'
 
-document.addEventListener('DOMContentLoaded', () => {
-    login()
+window.addEventListener('DOMContentLoaded', async () => {
+    Router
+        .use(Routes.login, LoginPage)
+        .use(Routes.register, RegisterPage)
+        .use(Routes.settings, ProfilePage)
+        .use(Routes.chat, MessengerPage)
+
+    let isProtectedRoute = true
+
+    switch (window.location.pathname) {
+    case Routes.login:
+    case Routes.register:
+        isProtectedRoute = false
+        break
+    default: break
+    }
+
+    try {
+        await AuthController.fetchUser()
+
+        Router.start()
+
+        if (!isProtectedRoute) {
+            Router.go(Routes.settings)
+        }
+    } catch (e) {
+        Router.start()
+
+        if (isProtectedRoute) {
+            Router.go(Routes.login)
+        }
+    }
 })

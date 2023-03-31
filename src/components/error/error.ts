@@ -1,23 +1,17 @@
-import Handlebars from 'handlebars'
 import { Block } from '../../utils/block'
+import styles from './styles.module.pcss'
+import template from './template.hbs'
 
-export interface Error {
-    tagName: string
-    __id: string
-}
-type Props = {
+interface ErrorProps {
     text: string
-    class: string
 }
-export class Error extends Block {
-    constructor(tagName: string | undefined, props: Props) {
-        super(tagName, { ...props })
+
+export class Error extends Block<ErrorProps> {
+    constructor(props: ErrorProps) {
+        super(props)
     }
 
     render() {
-        const { tagName } = this
-        const source = this.props.text
-        const template = Handlebars.compile(source)
-        return template({ tagName })
+        return this.compile(template, { ...this.props, styles })
     }
 }

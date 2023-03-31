@@ -1,49 +1,38 @@
-import Handlebars from 'handlebars'
 import { Block } from '../../utils/block'
+import styles from './styles.module.pcss'
+import template from './template.hbs'
 
-export interface Input {
-    tagName: string
-    __id: string
-    events: {
+interface InputProps {
+    type: string
+    name: string
+    placeholder: string
+    pattern?: RegExp
+    events?: {
         focus: () => void
         change: () => void
+        blur: (e: Event) => void
     }
 }
-type Props = {
-    type: string
-    placeholder: string
-    text?: string
-    class: string
-    name: string
-    focus: (e: Event) => void
-    change?: (e: Event) => void
-    blur: (e: Event) => void
-    value: string
-    pattern: string
-}
-export class Input extends Block {
-    value: string
 
-    constructor(tagName: string | undefined, props: Props) {
-        super(tagName, {
-            ...props,
-            events: {
-                focus: props.focus,
-                change: props.change,
-                blur: props.blur,
-            },
-        })
+export class Input extends Block<InputProps> {
+    constructor(props: InputProps) {
+        super(props)
+    }
+
+    public setValue(value: string) {
+        (this.element as HTMLInputElement).value = value
+        return (this.element as HTMLInputElement).value
+    }
+
+    public getName() {
+        return (this.element as HTMLInputElement).name
+    }
+
+    public getValue() {
+        return (this.element as HTMLInputElement).value
     }
 
     render() {
-        this.element?.setAttribute('name', this.props.name)
-        this.element?.setAttribute('type', this.props.type)
-        this.element?.setAttribute('required', true.toString())
-        this.element?.setAttribute('pattern', this.props.pattern)
-        this.element?.setAttribute('placeholder', this.props.placeholder)
-        const { tagName } = this
-        const source = ''
-        const template = Handlebars.compile(source)
-        return template({ tagName })
+        return this.compile(template, { ...this.props, styles })
     }
 }

@@ -1,47 +1,34 @@
 import { Block } from './block'
-import { renderDOM } from './render'
 import { isEqual } from './equal'
+import { render } from './render'
+
+export interface BlockConstructable<P extends Record<string, any> = any> {
+    new(props: P): Block<P>;
+}
 
 export class Route {
-    _pathname: string
+    private block: Block | null = null
 
-    _props: any
-
-    _blockClass: typeof Block
-
-    _block: Block | null
-
-    constructor(pathname: string, view: typeof Block, props: any) {
-        this._pathname = pathname
-        this._blockClass = view
-        this._block = null
-        this._props = props
-    }
-
-    navigate(pathname: string) {
-        if (this.match(pathname)) {
-            this._pathname = pathname
-            this.render()
-        }
+    constructor(
+        private pathname: string,
+        private readonly blockClass: BlockConstructable,
+        private readonly query: string,
+    ) {
     }
 
     leave() {
-        if (this._block) {
-            this._block.hide()
-        }
+        this.block = null
     }
 
     match(pathname: string) {
-        return isEqual(pathname, this._pathname)
+        return isEqual(pathname, this.pathname)
     }
 
     render() {
-        if (!this._block) {
-            this._block = new this._blockClass(this._props)
-            renderDOM(this._props.rootQuery, this._block)
-            return
-        }
+        if (!this.block) {
+            this.block = new this.blockClass({})
 
-        this._block.show()
+            render(this.query, this.block)
+        }
     }
 }

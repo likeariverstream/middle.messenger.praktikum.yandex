@@ -13,8 +13,8 @@
     }
   },
   "scripts": {
-    "dev": "parcel src/index.hbs --no-cache --open",
-    "build": "parcel build src/index.hbs --no-cache",
+    "dev": "parcel src/index.html --no-cache --open",
+    "build": "parcel build src/index.html --no-cache",
     "start": "npm run build && node server.js",
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",
@@ -28,7 +28,7 @@
   "author": "Sergey Kalachev",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
     "@parcel/transformer-inline-string": "2.8.3",
     "@types/uuid": "9.0.1",

@@ -1,6 +1,6 @@
 export enum Routes {
     login = '/',
-    register = '/sign-up',
+    register = '/register',
     settings = '/settings',
-    chat = '/messenger — чат'
+    chat = '/messenger'
 }
