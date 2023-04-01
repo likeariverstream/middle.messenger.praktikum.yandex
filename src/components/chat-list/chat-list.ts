@@ -19,18 +19,17 @@ class ChatsListBase extends Block<ChatsListProps> {
 
     protected init() {
         this.children.chats = this.createChats(this.props)
-        this.children.profileLink = new Link({ to: '/profile', label: 'Профиль' })
+        this.children.profileLink = new Link({ to: '/profile', text: 'Профиль' })
     }
 
     protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
         this.children.chats = this.createChats(newProps)
-        // if (oldProps) {
-        //     return !!oldProps
-        // }
+        console.log(newProps)
         return true
     }
 
     private createChats(props: ChatsListProps) {
+        console.log(props)
         return props.chats.map((data) => new Chat({
             ...data,
             events: {

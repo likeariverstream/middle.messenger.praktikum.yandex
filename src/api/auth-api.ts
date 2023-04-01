@@ -1,32 +1,32 @@
 import BaseAPI from './base-api'
 
 export interface SigninData {
-  login: string;
-  password: string;
+  login: string
+  password: string
 }
 
 export interface SignupData {
-  first_name: string;
-  second_name: string;
-  login: string;
-  email: string;
-  password: string;
-  phone: string;
+  first_name: string
+  second_name: string
+  login: string
+  email: string
+  password: string
+  phone: string
 }
 
 export interface User {
-  id: number;
-  first_name: string;
-  second_name: string;
+  id: number
+  first_name: string
+  second_name: string
   display_name: string
-  login: string;
-  email: string;
-  password: string;
-  phone: string;
-  avatar: string;
+  login: string
+  email: string
+  password: string
+  phone: string
+  avatar: string
   error?: string
   isLoading?: boolean
-  data?: unknown;
+  data?: unknown
 }
 
 export class AuthAPI extends BaseAPI {

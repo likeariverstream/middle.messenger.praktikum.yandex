@@ -12,9 +12,7 @@ export class MessengerPage extends Block {
 
     protected init() {
         this.children.chatsList = new ChatsList({ isLoaded: false })
-
         this.children.messenger = new Messenger({})
-
         ChatsController.fetchChats().finally(() => {
             (this.children.chatsList as Block).setProps({
                 isLoaded: true,

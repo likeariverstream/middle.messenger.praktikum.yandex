@@ -27,6 +27,7 @@ export class ChatsAPI extends BaseAPI {
     }
 
     read(): Promise<ChatInfo[]> {
+        console.log('hi')
         return this.http.get('/')
     }
 

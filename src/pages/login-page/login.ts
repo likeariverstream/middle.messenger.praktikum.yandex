@@ -28,24 +28,16 @@ export class LoginPage extends Block {
             type: 'submit',
             text: 'Войти',
             events: {
-                submit: (event) => this.onSubmit(event),
+                click: (e) => this.onClick(e),
             },
         })
         this.children.link = new Link({
             to: Routes.register,
             text: 'Регистрация',
-            events: {
-                click: () => this.onClick(),
-            },
-
         })
     }
 
-    onClick() {
-        return true
-    }
-
-    onSubmit(event: SubmitEvent) {
+    onClick(event: Event) {
         event.preventDefault()
         const values = Object
             .values(this.children)

@@ -192,9 +192,6 @@ export class Block<P extends Record<string, any> = any> {
                 const oldTarget = { ...target }
 
                 target[prop as keyof P] = value
-
-                // Запускаем обновление компоненты
-                // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target)
                 return true
             },

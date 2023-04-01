@@ -3,6 +3,7 @@ import { LoginPage } from './pages/login-page/login'
 import { RegisterPage } from './pages/register-page/register'
 import { MessengerPage } from './pages/messenger-page/messenger'
 import { ProfilePage } from './pages/profile-page/profile'
+import ChatsController from './controllers/chats-controller'
 import { Routes } from './types/routes'
 import Router from './utils/router'
 
@@ -25,11 +26,11 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     try {
         await AuthController.fetchUser()
-
         Router.start()
-
+        await ChatsController.fetchChats()
+        Router.start()
         if (!isProtectedRoute) {
-            Router.go(Routes.settings)
+            Router.go(Routes.chat)
         }
     } catch (e) {
         Router.start()

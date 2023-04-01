@@ -11,11 +11,10 @@ class AuthController {
     }
 
     async signin(data: SigninData) {
-        console.log('hi')
         try {
             await this.api.signin(data)
             await this.fetchUser()
-            router.go('/profile')
+            router.go('/settings')
         } catch (e: any) {
             console.error(e)
         }
@@ -25,7 +24,7 @@ class AuthController {
         try {
             await this.api.signup(data)
             await this.fetchUser()
-            router.go('/profile')
+            router.go('/settings')
         } catch (e: any) {
             console.error(e.message)
         }
