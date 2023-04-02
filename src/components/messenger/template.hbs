@@ -1,15 +1,26 @@
 <div class="{{ styles.messenger }}">
     {{#if selectedChat }}
-        <div class="{{ styles.messenger__messages }}">
-            {{#each messages}}
-                {{{this}}}
-            {{/each}}
-        </div>
-        <div class="{{ styles.messenger__footer }}">
-            {{{input}}}
-            {{{button}}}
-        </div>
+    <div class="{{ styles.container }}">
+        {{{addUserButton}}}
+        {{{searchUserButton}}}
+        {{{deleteUserButton}}}
+
+    </div>
+    <div class="{{ styles.box}}">
+        {{#if addUserMode }}{{{addUserInput}}}{{/if}}
+        {{#if searchUserMode }}{{{searchUserInput}}}{{/if}}
+        {{#if deleteUserMode }}{{{deleteUserInput}}}{{/if}}
+    </div>
+    <div class="{{ styles.messages }}">
+        {{#each messages}}
+        {{{this}}}
+        {{/each}}
+    </div>
+    <div class="{{ styles.footer }}">
+        {{{input}}}
+        {{{button}}}
+    </div>
     {{else}}
-        Выберите чат
+    Выберите чат
     {{/if}}
 </div>

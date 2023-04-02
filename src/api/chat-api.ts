@@ -27,7 +27,6 @@ export class ChatsAPI extends BaseAPI {
     }
 
     read(): Promise<ChatInfo[]> {
-        console.log('hi')
         return this.http.get('/')
     }
 
@@ -35,8 +34,12 @@ export class ChatsAPI extends BaseAPI {
         return this.http.get(`/${id}/users`)
     }
 
-    addUsers(id: number, users: number[]): Promise<unknown> {
+    addUsers(users: number[], id: number): Promise<unknown> {
         return this.http.put('/users', { users, chatId: id })
+    }
+
+    deleteUsers(users: number[], id: number): Promise<unknown> {
+        return this.http.delete('/users', { users, chatId: id })
     }
 
     async getToken(id: number): Promise<string> {

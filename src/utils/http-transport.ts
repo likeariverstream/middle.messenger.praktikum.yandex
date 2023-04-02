@@ -1,3 +1,5 @@
+import { baseUrl } from '../data/urls'
+
 export enum Method {
     Get = 'Get',
     Post = 'Post',
@@ -12,7 +14,7 @@ export enum Method {
   };
 
 export default class HTTPTransport {
-    static API_URL = 'https://ya-praktikum.tech/api/v2'
+    static API_URL = baseUrl
 
     protected endpoint: string
 

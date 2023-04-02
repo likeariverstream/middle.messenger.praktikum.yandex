@@ -5,10 +5,12 @@ import { ChatInfo } from '../api/chat-api'
 import { Message } from '../controllers/message-controller'
 
 interface State {
-    user: User;
-    chats: ChatInfo[];
-    messages: Record<number, Message[]>;
-    selectedChat?: number;
+    user: User
+    chats: ChatInfo[]
+    messages: Record<number, Message[]>
+    selectedChat?: number
+    userSearchResults: []
+    searchMode?: boolean
 }
 
 const store = new Store()

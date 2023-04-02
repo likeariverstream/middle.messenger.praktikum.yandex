@@ -11,8 +11,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     Router
         .use(Routes.login, LoginPage)
         .use(Routes.register, RegisterPage)
+        .use(Routes.messenger, MessengerPage)
         .use(Routes.settings, ProfilePage)
-        .use(Routes.chat, MessengerPage)
 
     let isProtectedRoute = true
 
@@ -28,13 +28,11 @@ window.addEventListener('DOMContentLoaded', async () => {
         await AuthController.fetchUser()
         Router.start()
         await ChatsController.fetchChats()
-        Router.start()
         if (!isProtectedRoute) {
-            Router.go(Routes.chat)
+            Router.go(Routes.messenger)
         }
     } catch (e) {
         Router.start()
-
         if (isProtectedRoute) {
             Router.go(Routes.login)
         }

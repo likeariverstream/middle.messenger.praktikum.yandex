@@ -1,10 +1,11 @@
 <aside class="{{ styles.chats-list }}">
-{{#if isLoaded }}
-    {{#each chats}}
-        {{{this}}}
-    {{/each}}
-    {{{profileLink}}}
-{{else}}
+  {{{profileLink}}}
+  {{{button}}}
+  {{#if isLoaded }}
+  {{#each chats}}
+  {{{this}}}
+  {{/each}}
+  {{else}}
   Загружается...
-{{/if}}
+  {{/if}}
 </aside>

@@ -1,33 +1,43 @@
-// import BaseAPI from './base-api'
+import BaseAPI from './base-api'
+import { User } from './auth-api'
 
-// export class ProfileAPI extends BaseAPI {
-//     constructor() {
-//         super('/user')
-//     }
+export interface ChangePassword {
+    oldPassword: string
+    newPassword: string
+}
 
-//     read(identifier: string): Promise<any> {
-//         return this.http.get(`/${identifier}`)
-//     }
+export interface SearchUser {
+    login: string
+}
 
-//     update(data: any): Promise<any> {
-//         return this.http.put('/profile', data)
-//     }
+export class ProfileAPI extends BaseAPI {
+    constructor() {
+        super('/user')
+    }
 
-//     loadAvatar(data: FormData): Promise<any> {
-//         return this.http.put('/profile/avatar', data)
-//     }
+    read(identifier: string): Promise<any> {
+        return this.http.get(`/${identifier}`)
+    }
 
-//     changePassword(data: any): Promise<any> {
-//         return this.http.put('/password', data)
-//     }
+    update(data: any): Promise<any> {
+        return this.http.put('/profile', data)
+    }
 
-//     searchUser(data: any): Promise<any> {
-//         return this.http.post('/search', data)
-//     }
+    loadAvatar(data: FormData): Promise<any> {
+        return this.http.put('/profile/avatar', data)
+    }
 
-//     create = undefined
+    changePassword(data: ChangePassword): Promise<User> {
+        return this.http.put('/password', data)
+    }
 
-//     delete = undefined
-// }
+    searchUser(data: SearchUser): Promise<User> {
+        return this.http.post('/search', data)
+    }
 
-// export default new ProfileAPI()
+    create = undefined
+
+    delete = undefined
+}
+
+export default new ProfileAPI()

@@ -68,9 +68,7 @@ export class RegisterPage extends Block {
             .values(this.children)
             .filter((child) => child instanceof Input)
             .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
-
         const data = Object.fromEntries(values)
-
         AuthController.signup(data as SignupData)
     }
 

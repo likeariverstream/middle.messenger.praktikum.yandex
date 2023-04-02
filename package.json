@@ -15,6 +15,7 @@
   "scripts": {
     "dev": "parcel src/index.html --no-cache --open",
     "build": "parcel build src/index.html --no-cache",
+    "rebuild": "rimraf -rf ./dist && npm run dev --open",
     "start": "npm run build && node server.js",
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",

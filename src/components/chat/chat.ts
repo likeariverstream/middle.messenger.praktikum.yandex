@@ -3,6 +3,8 @@ import template from './chat.hbs'
 import styles from './styles.module.pcss'
 import { withStore } from '../../hocs/withStore'
 import { ChatInfo } from '../../api/chat-api'
+import { Button } from '../button/button'
+import ChatsController from '../../controllers/chats-controller'
 
 interface ChatProps {
     id: number;
@@ -17,6 +19,20 @@ interface ChatProps {
 class ChatBase extends Block<ChatProps> {
     constructor(props: ChatProps) {
         super(props)
+    }
+
+    protected init(): void {
+        this.children.button = new Button({
+            type: 'button',
+            text: 'Удалить',
+            events: {
+                click: () => this.deleteChat(),
+            },
+        })
+    }
+
+    private deleteChat() {
+        ChatsController.delete(this.props.id)
     }
 
     protected render(): DocumentFragment {

@@ -16,7 +16,6 @@ class ChatsController {
 
     async fetchChats() {
         const chats = await this.api.read()
-        console.log(chats)
         chats.map(async (chat) => {
             const token = await this.getToken(chat.id)
             await MessagesController.connect(chat.id, token)
@@ -24,8 +23,12 @@ class ChatsController {
         store.set('chats', chats)
     }
 
-    addUserToChat(id: number, userId: number) {
-        this.api.addUsers(id, [userId])
+    async addUserToChat(userId: number[], chatId: number) {
+        this.api.addUsers(userId, chatId)
+    }
+
+    async deleteUserFromChat(userId: number[], chatId: number) {
+        this.api.deleteUsers(userId, chatId)
     }
 
     async delete(id: number) {
@@ -34,7 +37,7 @@ class ChatsController {
         this.fetchChats()
     }
 
-    getToken(id: number) {
+    async getToken(id: number) {
         return this.api.getToken(id)
     }
 

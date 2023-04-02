@@ -1,10 +1,13 @@
+import ProfileController from '../../controllers/profile-controller'
 import { Block } from '../../utils/block'
 import template from './template.hbs'
+import styles from './styles.module.pcss'
 import { withStore } from '../../hocs/withStore'
 import AuthController from '../../controllers/auth-controller'
 import { Button } from '../../components/button/button'
 import { User } from '../../api/auth-api'
 import { ProfileField } from '../../components/profile-field/profile-field'
+import router from '../../utils/router'
 
 interface ProfileProps extends User { }
 
@@ -20,9 +23,22 @@ const userFields: Array<keyof ProfileProps> = [
     'phone',
 ]
 
+const fieldLabels = [
+    'ID',
+    'Имя',
+    'Фамилия',
+    'Отображаемое имя',
+    'Логин',
+    'Пароль',
+    'Аватар',
+    'Email',
+    'Телефон',
+]
+
 class ProfilePageBase extends Block<ProfileProps> {
     init() {
-        this.children.fields = userFields.map((name) => new ProfileField({ name, value: this.props[name] }))
+        this.children.fields = userFields
+            .map((name, index) => new ProfileField({ name, value: this.props[name], text: fieldLabels[index] }))
         this.children.logoutButton = new Button({
             text: 'Выйти',
             events: {
@@ -31,6 +47,25 @@ class ProfilePageBase extends Block<ProfileProps> {
                 },
             },
         })
+        this.children.confirmButton = new Button({
+            text: 'Подтвердить данные',
+            events: {
+                click: (e) => {
+                    this.onClick(e)
+                },
+            },
+        })
+    }
+
+    onClick(event: Event) {
+        event.preventDefault()
+        const fields = Array.from(document.querySelectorAll('input'))
+        const data: Record<string, string> = {}
+        fields.forEach((field) => {
+            data[field.name] = field.value
+        })
+
+        ProfileController.updateProfile(data).then(() => router.go('/messenger'))
     }
 
     protected componentDidUpdate(oldProps: ProfileProps, newProps: ProfileProps): boolean {
@@ -41,7 +76,7 @@ class ProfilePageBase extends Block<ProfileProps> {
     }
 
     render() {
-        return this.compile(template, this.props)
+        return this.compile(template, { ...this.props, styles })
     }
 }
 

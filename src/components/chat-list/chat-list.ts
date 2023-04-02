@@ -6,6 +6,7 @@ import { withStore } from '../../hocs/withStore'
 import { ChatInfo } from '../../api/chat-api'
 import ChatsController from '../../controllers/chats-controller'
 import { Link } from '../link/link'
+import { Button } from '../button/button'
 
 interface ChatsListProps {
     chats: ChatInfo[];
@@ -19,17 +20,27 @@ class ChatsListBase extends Block<ChatsListProps> {
 
     protected init() {
         this.children.chats = this.createChats(this.props)
-        this.children.profileLink = new Link({ to: '/profile', text: 'Профиль' })
+        this.children.button = new Button({
+            type: 'button',
+            text: 'Создать чат',
+            events: {
+                click: () => this.createNewChat(),
+            },
+        })
+        this.children.profileLink = new Link({ to: '/settings', text: 'Профиль' })
     }
 
     protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
         this.children.chats = this.createChats(newProps)
-        console.log(newProps)
         return true
     }
 
+    createNewChat() {
+        const data = 'Новый чатик'
+        ChatsController.create(data)
+    }
+
     private createChats(props: ChatsListProps) {
-        console.log(props)
         return props.chats.map((data) => new Chat({
             ...data,
             events: {

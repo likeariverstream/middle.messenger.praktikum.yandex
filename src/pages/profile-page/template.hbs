@@ -1,9 +1,15 @@
-<div>
-    <h2>
-        User Profile:
-    </h2>
-    {{#each fields}}
+<main class="{{ styles.profile }}">
+    <form class="{{ styles.form }}">
+        <h2 class="{{ styles.title }}">
+            Данные профиля
+        </h2>
+        {{#each fields}}
         {{{this}}}
-    {{/each}}
-    {{{ logoutButton }}}
-</div>
+        {{/each}}
+        <div class="{{ styles.container }}">
+            {{{ confirmButton }}}
+            <span class="{{ styles.span }}">Или</span>
+            {{{ logoutButton }}}
+        </div>
+    </form>
+</main>

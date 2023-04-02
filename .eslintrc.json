@@ -45,6 +45,7 @@
         "no-restricted-syntax": "off",
         "no-prototype-builtins": "off",
         "no-continue": "off",
-        "default-param-last": "off"
+        "default-param-last": "off",
+        "no-return-assign": "off"
     }
 }
