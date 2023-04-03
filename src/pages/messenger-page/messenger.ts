@@ -11,7 +11,7 @@ export class MessengerPage extends Block {
     }
 
     protected init() {
-        this.children.chatsList = new ChatsList({ isLoaded: false })
+        this.children.chatsList = new ChatsList({ isLoaded: false, createChatMode: false })
         this.children.messenger = new Messenger({
             searchUserMode: false,
             deleteUserMode: false,

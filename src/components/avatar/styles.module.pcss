@@ -1,19 +1,25 @@
 @import url("../../vars.pcss");
 
+$avatarSize: 120px;
+
 .avatar {
-    width: 36px;
-    height: 36px;
     background: $whiteColor;
-    border-radius: 100%;
-    transition: all 0.2s ease;
+    object-fit: cover;
+    border-radius: $avatarSize;
+    box-sizing: border-box;
+    width: $avatarSize;
+    position: relative;
+    transition: .2s ease-in-out;
+  }
 
-    &:hover {
-        cursor: pointer;
-        opacity: .7;
-    }
-}
-
-.image {
+.image{
     display: block;
+    padding: 0;
     margin: 0;
-}
+    object-fit: cover;
+    border-radius: $avatarSize;
+    box-sizing: border-box;
+    width: $avatarSize;
+    height: $avatarSize;
+  }
+  

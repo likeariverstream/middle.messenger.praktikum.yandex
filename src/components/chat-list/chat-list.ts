@@ -7,10 +7,12 @@ import { ChatInfo } from '../../api/chat-api'
 import ChatsController from '../../controllers/chats-controller'
 import { Link } from '../link/link'
 import { Button } from '../button/button'
+import { Input } from '../input/input'
 
 interface ChatsListProps {
-    chats: ChatInfo[];
-    isLoaded: boolean;
+    chats: ChatInfo[]
+    isLoaded: boolean
+    createChatMode: boolean
 }
 
 class ChatsListBase extends Block<ChatsListProps> {
@@ -27,6 +29,11 @@ class ChatsListBase extends Block<ChatsListProps> {
                 click: () => this.createNewChat(),
             },
         })
+        this.children.input = new Input({
+            type: 'text',
+            placeholder: 'Название чата',
+            name: 'name',
+        })
         this.children.profileLink = new Link({ to: '/settings', text: 'Профиль' })
     }
 
@@ -36,8 +43,13 @@ class ChatsListBase extends Block<ChatsListProps> {
     }
 
     createNewChat() {
-        const data = 'Новый чатик'
-        ChatsController.create(data)
+        this.props.createChatMode = !this.props.createChatMode
+        const data = (this.children.input as Input).getValue()
+        if (data) {
+            ChatsController.create(data).then(() => {
+                this.props.createChatMode = false
+            }).catch(() => (this.children.input as Input).setValue('Что-то пошло не так'))
+        }
     }
 
     private createChats(props: ChatsListProps) {

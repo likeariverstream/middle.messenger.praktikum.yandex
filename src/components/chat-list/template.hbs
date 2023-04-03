@@ -1,6 +1,7 @@
 <aside class="{{ styles.chats-list }}">
   {{{profileLink}}}
   {{{button}}}
+  {{#if createChatMode }}{{{input}}}{{/if}}
   {{#if isLoaded }}
   {{#each chats}}
   {{{this}}}

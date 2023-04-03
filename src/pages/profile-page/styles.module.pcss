@@ -2,20 +2,22 @@
 
 .profile {
     width: 100%;
-    height: 100vh;
+    height: max-content;
     margin: 0 auto;
     background: #3b3838;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 .form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
     border-radius: 8px;
     border: 0.5px solid rgba(207, 201, 176, 0.9);
     transition: all .3s ease-in-out;
@@ -39,4 +41,50 @@
     display: flex;
     gap: 8px;
     align-items: center;
+}
+
+.passwordForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    
+    &>input {
+        border: 2px solid #cccccc;
+        border-radius: 4px;
+        display: inline-block;
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+}
+
+.fileForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    &>input {
+        border: 2px solid #cccccc;
+        border-radius: 4px;
+        display: inline-block;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 16px; 
+        &:active {
+            background-color: #dddddd;
+        }
+        &:hover {
+            background-color: #eee;
+        }
+        &::-webkit-file-upload-button {
+            display: none;
+        }
+        &::-moz-file-upload-button {
+            display: none;
+        }
+        &::-ms-file-upload-button {
+            display: none;
+        }
+    }
 }

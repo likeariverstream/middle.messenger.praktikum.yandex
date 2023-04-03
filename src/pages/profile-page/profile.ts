@@ -2,14 +2,19 @@ import ProfileController from '../../controllers/profile-controller'
 import { Block } from '../../utils/block'
 import template from './template.hbs'
 import styles from './styles.module.pcss'
-import { withStore } from '../../hocs/withStore'
+import store, { withStore } from '../../hocs/withStore'
 import AuthController from '../../controllers/auth-controller'
 import { Button } from '../../components/button/button'
 import { User } from '../../api/auth-api'
 import { ProfileField } from '../../components/profile-field/profile-field'
 import router from '../../utils/router'
+import { Avatar } from '../../components/avatar/avatar'
+import { Input } from '../../components/input/input'
+import { baseUrl, avatarResourseEndPoint } from '../../data/urls'
 
-interface ProfileProps extends User { }
+interface ProfileProps extends User {
+    changeAvatarMode: boolean
+}
 
 const userFields: Array<keyof ProfileProps> = [
     'id',
@@ -17,8 +22,8 @@ const userFields: Array<keyof ProfileProps> = [
     'second_name',
     'display_name',
     'login',
-    'password',
-    'avatar',
+    // 'password',
+    // 'avatar',
     'email',
     'phone',
 ]
@@ -29,14 +34,21 @@ const fieldLabels = [
     'Фамилия',
     'Отображаемое имя',
     'Логин',
-    'Пароль',
-    'Аватар',
+    // 'Пароль',
+    // 'Аватар',
     'Email',
     'Телефон',
 ]
 
 class ProfilePageBase extends Block<ProfileProps> {
     init() {
+        this.children.avatar = new Avatar({
+            src: `${baseUrl}${avatarResourseEndPoint}${store.getState().user.avatar}`,
+            alt: 'Аватар',
+            events: {
+                click: () => true,
+            },
+        })
         this.children.fields = userFields
             .map((name, index) => new ProfileField({ name, value: this.props[name], text: fieldLabels[index] }))
         this.children.logoutButton = new Button({
@@ -55,6 +67,58 @@ class ProfilePageBase extends Block<ProfileProps> {
                 },
             },
         })
+        this.children.changeAvatarButton = new Button({
+            text: 'Загрузить аватар',
+            type: 'submit',
+            events: {
+                click: (event) => {
+                    this.changeAvatar(event)
+                },
+            },
+        })
+        this.children.changeAvatarInput = new Input({
+            type: 'file',
+            placeholder: 'Добавьте файл',
+            name: 'avatar',
+        })
+        this.children.oldPasswordInput = new Input({
+            type: 'password',
+            placeholder: 'Старый пароль',
+            name: 'old-password',
+        })
+        this.children.newPasswordInput = new Input({
+            type: 'password',
+            placeholder: 'Новый пароль',
+            name: 'new-password',
+        })
+        this.children.changePasswordButton = new Button({
+            text: 'Изменить пароль',
+            type: 'submit',
+            events: {
+                click: (event) => this.changePassword(event),
+            },
+        })
+    }
+
+    changePassword(event: Event) {
+        event.preventDefault()
+        const oldPasswordValue = (this.children.oldPasswordInput as Input).getValue()
+        const newPasswordValue = (this.children.newPasswordInput as Input).getValue()
+        const data = { oldPassword: oldPasswordValue, newPassword: newPasswordValue }
+        if (oldPasswordValue !== newPasswordValue) {
+            ProfileController.updatePassword(data)
+        }
+    }
+
+    changeAvatar(event: Event) {
+        event.preventDefault()
+        const inputAvatar = document.getElementsByName('avatar')[0] as HTMLInputElement
+        const file = inputAvatar.files?.[0]
+        if (file !== undefined) {
+            const formData = new FormData()
+            formData.append('avatar', file, file.name)
+            ProfileController.updateAvatar(formData)
+        }
     }
 
     onClick(event: Event) {
