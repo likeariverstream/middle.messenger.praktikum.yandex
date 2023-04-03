@@ -128,7 +128,7 @@ class ProfilePageBase extends Block<ProfileProps> {
         profileController.updateProfile(data).then(() => router.go('/messenger'))
     }
 
-    protected componentDidUpdate(oldProps: ProfileProps, newProps: ProfileProps): boolean {
+    protected componentDidUpdate(_oldProps: ProfileProps, newProps: ProfileProps): boolean {
         (this.children.fields as ProfileField[]).forEach((field, i) => {
             field.setProps({ value: newProps[userFields[i]] })
         })

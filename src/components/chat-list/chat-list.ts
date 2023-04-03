@@ -37,7 +37,7 @@ class ChatsListBase extends Block<ChatsListProps> {
         this.children.profileLink = new Link({ to: '/settings', text: 'Профиль' })
     }
 
-    protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
+    protected componentDidUpdate(_oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
         this.children.chats = this.createChats(newProps)
         return true
     }

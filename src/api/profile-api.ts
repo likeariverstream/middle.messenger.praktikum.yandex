@@ -19,7 +19,7 @@ export class ProfileAPI extends BaseAPI {
         return this.http.get(`/${identifier}`)
     }
 
-    update(data: PublicUserFields): Promise<User> {
+    update(data: Record<string, string>): Promise<User> {
         return this.http.put('/profile', data)
     }
 
@@ -34,8 +34,4 @@ export class ProfileAPI extends BaseAPI {
     searchUser(data: SearchUser): Promise<User> {
         return this.http.post('/search', data)
     }
-
-    create = undefined
-
-    delete = undefined
 }
