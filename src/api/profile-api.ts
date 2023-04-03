@@ -5,7 +5,7 @@ export interface ChangePassword {
     oldPassword: string
     newPassword: string
 }
-
+export type PublicUserFields = Omit<User, 'password' | 'avatar'>
 export interface SearchUser {
     login: string
 }
@@ -15,19 +15,19 @@ export class ProfileAPI extends BaseAPI {
         super('/user')
     }
 
-    read(identifier: string): Promise<Omit<User, 'password' | 'avatar'>> {
+    read(identifier: string): Promise<PublicUserFields> {
         return this.http.get(`/${identifier}`)
     }
 
-    update(data: any): Promise<User> {
+    update(data: PublicUserFields): Promise<User> {
         return this.http.put('/profile', data)
     }
 
-    changeAvatar(data: FormData): Promise<Omit<User, 'password' | 'avatar'>> {
+    changeAvatar(data: FormData): Promise<PublicUserFields> {
         return this.http.put('/profile/avatar', data)
     }
 
-    changePassword(data: ChangePassword): Promise<Omit<User, 'password' | 'avatar'>> {
+    changePassword(data: ChangePassword): Promise<PublicUserFields> {
         return this.http.put('/password', data)
     }
 

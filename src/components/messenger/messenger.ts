@@ -120,9 +120,6 @@ class MessengerBase extends Block<MessengerProps> {
     }
 
     protected componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): boolean {
-        if (oldProps && newProps) {
-            return true
-        }
         this.children.messages = this.createMessages(newProps)
         return true
     }

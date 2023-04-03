@@ -38,19 +38,18 @@ class ChatsListBase extends Block<ChatsListProps> {
     }
 
     protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
-        if (oldProps && newProps) {
-            return true
-        }
         this.children.chats = this.createChats(newProps)
         return true
     }
 
     createNewChat() {
         this.props.createChatMode = !this.props.createChatMode
-        const data = (this.children.input as Input).getValue()
+        const input = this.children.input as Input
+        const data = input.getValue()
         if (data) {
             chatsController.create(data).then(() => {
                 this.props.createChatMode = false
+                input.setValue('')
             }).catch(() => (this.children.input as Input).setValue('Что-то пошло не так'))
         }
     }

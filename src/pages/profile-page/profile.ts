@@ -22,8 +22,6 @@ const userFields: Array<keyof ProfileProps> = [
     'second_name',
     'display_name',
     'login',
-    // 'password',
-    // 'avatar',
     'email',
     'phone',
 ]
@@ -34,8 +32,6 @@ const fieldLabels = [
     'Фамилия',
     'Отображаемое имя',
     'Логин',
-    // 'Пароль',
-    // 'Аватар',
     'Email',
     'Телефон',
 ]
@@ -133,9 +129,6 @@ class ProfilePageBase extends Block<ProfileProps> {
     }
 
     protected componentDidUpdate(oldProps: ProfileProps, newProps: ProfileProps): boolean {
-        if (oldProps && newProps) {
-            return true
-        }
         (this.children.fields as ProfileField[]).forEach((field, i) => {
             field.setProps({ value: newProps[userFields[i]] })
         })

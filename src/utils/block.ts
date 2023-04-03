@@ -100,9 +100,7 @@ export class Block<P extends Record<string, any> = any> {
     }
 
     protected componentDidUpdate(oldProps: P, newProps: P) {
-        if (oldProps && newProps) {
-            return true
-        }
+        console.log(oldProps, newProps)
         return true
     }
 

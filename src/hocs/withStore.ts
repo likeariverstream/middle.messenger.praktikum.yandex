@@ -15,8 +15,6 @@ interface State {
 
 export const store = new Store()
 
-window.store = store
-
 export function withStore<SP extends Partial<any>>(mapStateToProps: (state: State) => SP) {
     return function wrap<P>(Component: typeof Block<SP & P>) {
         return class WithStore extends Component {

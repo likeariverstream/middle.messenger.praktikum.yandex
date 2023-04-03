@@ -66,13 +66,9 @@ class MessagesController {
     }
 
     private onMessage(id: number, messages: Message | Message[]) {
-        let messagesToAdd: Message[] = []
-
-        if (Array.isArray(messages)) {
-            messagesToAdd = messages.reverse()
-        } else {
-            messagesToAdd.push(messages)
-        }
+        let messagesToAdd: Message[] = Array.isArray(messages)
+            ? messages.reverse()
+            : [messages]
 
         const currentMessages = (store.getState().messages || {})[id] || []
 
