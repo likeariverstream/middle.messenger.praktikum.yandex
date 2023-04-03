@@ -1,6 +1,6 @@
 import { ProfileAPI, ChangePassword, SearchUser } from '../api/profile-api'
-import store from '../hocs/withStore'
-import AuthController from '../controllers/auth-controller'
+import { store } from '../hocs/withStore'
+import { authController } from '../controllers/auth-controller'
 
 class ProfileController {
     private readonly api
@@ -12,7 +12,7 @@ class ProfileController {
     async updateProfile(data: Record<string, string>) {
         try {
             await this.api.update(data)
-            await AuthController.fetchUser()
+            await authController.fetchUser()
         } catch (e) {
             store.set('user.error', (e))
         }
@@ -21,7 +21,7 @@ class ProfileController {
     async updateAvatar(data: FormData) {
         try {
             await this.api.changeAvatar(data)
-            await AuthController.fetchUser()
+            await authController.fetchUser()
         } catch (e) {
             store.set('user.error', (e))
         }
@@ -46,4 +46,4 @@ class ProfileController {
     }
 }
 
-export default new ProfileController()
+export const profileController = new ProfileController()

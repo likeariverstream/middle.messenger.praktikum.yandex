@@ -1,13 +1,13 @@
-import ProfileController from '../../controllers/profile-controller'
+import { profileController } from '../../controllers/profile-controller'
 import { Block } from '../../utils/block'
 import template from './template.hbs'
 import styles from './styles.module.pcss'
-import store, { withStore } from '../../hocs/withStore'
-import AuthController from '../../controllers/auth-controller'
+import { store, withStore } from '../../hocs/withStore'
+import { authController } from '../../controllers/auth-controller'
 import { Button } from '../../components/button/button'
 import { User } from '../../api/auth-api'
 import { ProfileField } from '../../components/profile-field/profile-field'
-import router from '../../utils/router'
+import { router } from '../../utils/router'
 import { Avatar } from '../../components/avatar/avatar'
 import { Input } from '../../components/input/input'
 import { baseUrl, avatarResourseEndPoint } from '../../data/urls'
@@ -55,7 +55,7 @@ class ProfilePageBase extends Block<ProfileProps> {
             text: 'Выйти',
             events: {
                 click: () => {
-                    AuthController.logout()
+                    authController.logout()
                 },
             },
         })
@@ -106,7 +106,7 @@ class ProfilePageBase extends Block<ProfileProps> {
         const newPasswordValue = (this.children.newPasswordInput as Input).getValue()
         const data = { oldPassword: oldPasswordValue, newPassword: newPasswordValue }
         if (oldPasswordValue !== newPasswordValue) {
-            ProfileController.updatePassword(data)
+            profileController.updatePassword(data)
         }
     }
 
@@ -117,7 +117,7 @@ class ProfilePageBase extends Block<ProfileProps> {
         if (file !== undefined) {
             const formData = new FormData()
             formData.append('avatar', file, file.name)
-            ProfileController.updateAvatar(formData)
+            profileController.updateAvatar(formData)
         }
     }
 
@@ -129,7 +129,7 @@ class ProfilePageBase extends Block<ProfileProps> {
             data[field.name] = field.value
         })
 
-        ProfileController.updateProfile(data).then(() => router.go('/messenger'))
+        profileController.updateProfile(data).then(() => router.go('/messenger'))
     }
 
     protected componentDidUpdate(oldProps: ProfileProps, newProps: ProfileProps): boolean {

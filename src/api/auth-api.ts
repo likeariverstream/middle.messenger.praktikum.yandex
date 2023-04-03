@@ -1,4 +1,4 @@
-import BaseAPI from './base-api'
+import { BaseAPI } from './base-api'
 
 export interface SigninData {
   login: string
@@ -49,12 +49,6 @@ export class AuthAPI extends BaseAPI {
     logout() {
         return this.http.post('/logout')
     }
-
-    create = undefined
-
-    update = undefined
-
-    delete = undefined
 }
 
-export default new AuthAPI()
+export const API = new AuthAPI()

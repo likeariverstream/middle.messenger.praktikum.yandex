@@ -13,7 +13,7 @@ export enum Method {
     data?: any;
   };
 
-export default class HTTPTransport {
+export class HTTPTransport {
     static API_URL = baseUrl
 
     protected endpoint: string

@@ -5,7 +5,7 @@ import styles from './styles.module.pcss'
 import { Input } from '../../components/input/input'
 import { Button } from '../../components/button/button'
 import { Routes } from '../../types/routes'
-import AuthController from '../../controllers/auth-controller'
+import { authController } from '../../controllers/auth-controller'
 // import { Patterns } from '../../types/patterns'
 
 export class LoginPage extends Block {
@@ -44,7 +44,7 @@ export class LoginPage extends Block {
             .filter((child) => child instanceof Input)
             .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
         const data = Object.fromEntries(values)
-        AuthController.signin(data)
+        authController.signin(data)
     }
 
     render() {

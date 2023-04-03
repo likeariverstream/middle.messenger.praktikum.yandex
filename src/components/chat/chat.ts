@@ -4,7 +4,7 @@ import styles from './styles.module.pcss'
 import { withStore } from '../../hocs/withStore'
 import { ChatInfo } from '../../api/chat-api'
 import { Button } from '../button/button'
-import ChatsController from '../../controllers/chats-controller'
+import { chatsController } from '../../controllers/chats-controller'
 
 interface ChatProps {
     id: number;
@@ -32,7 +32,7 @@ class ChatBase extends Block<ChatProps> {
     }
 
     private deleteChat() {
-        ChatsController.delete(this.props.id)
+        chatsController.delete(this.props.id)
     }
 
     protected render(): DocumentFragment {

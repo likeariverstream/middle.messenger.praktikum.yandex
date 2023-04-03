@@ -13,7 +13,7 @@ interface State {
     searchMode?: boolean
 }
 
-const store = new Store()
+export const store = new Store()
 
 window.store = store
 
@@ -36,5 +36,3 @@ export function withStore<SP extends Partial<any>>(mapStateToProps: (state: Stat
         }
     }
 }
-
-export default store

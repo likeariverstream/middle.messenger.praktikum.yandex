@@ -1,14 +1,14 @@
-import AuthController from './controllers/auth-controller'
+import { authController } from './controllers/auth-controller'
 import { LoginPage } from './pages/login-page/login'
 import { RegisterPage } from './pages/register-page/register'
 import { MessengerPage } from './pages/messenger-page/messenger'
 import { ProfilePage } from './pages/profile-page/profile'
-import ChatsController from './controllers/chats-controller'
+import { chatsController } from './controllers/chats-controller'
 import { Routes } from './types/routes'
-import Router from './utils/router'
+import { router } from './utils/router'
 
 window.addEventListener('DOMContentLoaded', async () => {
-    Router
+    router
         .use(Routes.login, LoginPage)
         .use(Routes.register, RegisterPage)
         .use(Routes.messenger, MessengerPage)
@@ -25,16 +25,16 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        await AuthController.fetchUser()
-        Router.start()
-        await ChatsController.fetchChats()
+        await authController.fetchUser()
+        router.start()
+        await chatsController.fetchChats()
         if (!isProtectedRoute) {
-            Router.go(Routes.messenger)
+            router.go(Routes.messenger)
         }
     } catch (e) {
-        Router.start()
+        router.start()
         if (isProtectedRoute) {
-            Router.go(Routes.login)
+            router.go(Routes.login)
         }
     }
 })

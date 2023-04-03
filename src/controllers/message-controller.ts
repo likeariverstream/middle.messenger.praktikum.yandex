@@ -1,21 +1,21 @@
-import WSTransport, { WSTransportEvents } from '../utils/ws-transport'
-import store from '../hocs/withStore'
+import { WSTransport, WSTransportEvents } from '../utils/ws-transport'
+import { store } from '../hocs/withStore'
 
 export interface Message {
-  chat_id: number
-  time: string
-  type: string
-  user_id: number
-  content: string
-  file?: {
-    id: number
+    chat_id: number
+    time: string
+    type: string
     user_id: number
-    path: string;
-    filename: string
-    content_type: string
-    content_size: number
-    upload_date: string
-  }
+    content: string
+    file?: {
+        id: number
+        user_id: number
+        path: string;
+        filename: string
+        content_type: string
+        content_size: number
+        upload_date: string
+    }
 }
 
 class MessagesController {
@@ -91,8 +91,6 @@ class MessagesController {
     }
 }
 
-const controller = new MessagesController()
+export const messagesController = new MessagesController()
 
-window.messagesController = controller
-
-export default controller
+window.messagesController = messagesController

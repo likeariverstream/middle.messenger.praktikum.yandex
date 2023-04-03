@@ -1,7 +1,9 @@
-import API, { AuthAPI, SigninData, SignupData } from '../api/auth-api'
-import store from '../hocs/withStore'
-import router from '../utils/router'
-import MessagesController from './message-controller'
+import {
+    API, AuthAPI, SigninData, SignupData,
+} from '../api/auth-api'
+import { store } from '../hocs/withStore'
+import { router } from '../utils/router'
+import { messagesController } from './message-controller'
 
 class AuthController {
     private readonly api: AuthAPI
@@ -37,7 +39,7 @@ class AuthController {
 
     async logout() {
         try {
-            MessagesController.closeAll()
+            messagesController.closeAll()
             await this.api.logout()
             router.go('/')
         } catch (e) {
@@ -46,4 +48,4 @@ class AuthController {
     }
 }
 
-export default new AuthController()
+export const authController = new AuthController()

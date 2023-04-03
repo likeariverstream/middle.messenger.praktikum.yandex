@@ -7,7 +7,7 @@ export enum WSTransportEvents {
   Close = 'close',
 }
 
-export default class WSTransport extends EventBus {
+export class WSTransport extends EventBus {
     private socket: WebSocket | null = null
 
     private pingInterval: number = 0

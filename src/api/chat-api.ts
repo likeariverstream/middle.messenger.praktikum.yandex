@@ -1,16 +1,16 @@
-import BaseAPI from './base-api'
+import { BaseAPI } from './base-api'
 import { User } from './auth-api'
 
 export interface ChatInfo {
-  id: number;
-  title: string;
-  avatar: string;
-  unread_count: number;
-  last_message: {
-    user: User,
-    time: string;
-    content: string;
-  }
+    id: number;
+    title: string;
+    avatar: string;
+    unread_count: number;
+    last_message: {
+        user: User,
+        time: string;
+        content: string;
+    }
 }
 
 export class ChatsAPI extends BaseAPI {
@@ -47,8 +47,6 @@ export class ChatsAPI extends BaseAPI {
 
         return response.token
     }
-
-    update = undefined
 }
 
-export default new ChatsAPI()
+export const API = new ChatsAPI()

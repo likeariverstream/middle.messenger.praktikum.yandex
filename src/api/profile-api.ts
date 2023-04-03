@@ -1,4 +1,4 @@
-import BaseAPI from './base-api'
+import { BaseAPI } from './base-api'
 import { User } from './auth-api'
 
 export interface ChangePassword {
@@ -39,5 +39,3 @@ export class ProfileAPI extends BaseAPI {
 
     delete = undefined
 }
-
-export default new ProfileAPI()

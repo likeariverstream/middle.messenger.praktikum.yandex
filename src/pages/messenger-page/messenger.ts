@@ -3,7 +3,7 @@ import template from './template.hbs'
 import { ChatsList } from '../../components/chat-list/chat-list'
 import { Messenger } from '../../components/messenger/messenger'
 import styles from './styles.module.pcss'
-import ChatsController from '../../controllers/chats-controller'
+import { chatsController } from '../../controllers/chats-controller'
 
 export class MessengerPage extends Block {
     constructor() {
@@ -17,7 +17,7 @@ export class MessengerPage extends Block {
             deleteUserMode: false,
             addUserMode: false,
         })
-        ChatsController.fetchChats().finally(() => {
+        chatsController.fetchChats().finally(() => {
             (this.children.chatsList as Block).setProps({
                 isLoaded: true,
             })

@@ -65,4 +65,4 @@ class Router {
     }
 }
 
-export default new Router('#root')
+export const router = new Router('#root')

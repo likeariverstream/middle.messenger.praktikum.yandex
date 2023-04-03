@@ -5,10 +5,10 @@ import { Message } from '../message/message'
 import { Input } from '../input/input'
 import { Button } from '../button/button'
 import styles from './styles.module.pcss'
-import MessagesController, { Message as MessageInfo } from '../../controllers/message-controller'
-import store, { withStore } from '../../hocs/withStore'
-import ChatsController from '../../controllers/chats-controller'
-import ProfileController from '../../controllers/profile-controller'
+import { messagesController, Message as MessageInfo } from '../../controllers/message-controller'
+import { store, withStore } from '../../hocs/withStore'
+import { chatsController } from '../../controllers/chats-controller'
+import { profileController } from '../../controllers/profile-controller'
 
 interface MessengerProps {
     selectedChat: number | undefined;
@@ -77,7 +77,7 @@ class MessengerBase extends Block<MessengerProps> {
                     const input = this.children.input as Input
                     const message = input.getValue()
                     input.setValue('')
-                    MessagesController.sendMessage(this.props.selectedChat!, message)
+                    messagesController.sendMessage(this.props.selectedChat!, message)
                 },
             },
         })
@@ -88,7 +88,7 @@ class MessengerBase extends Block<MessengerProps> {
         const value = (this.children.addUserInput as Input).getValue()
         if (value) {
             const userId = [Number(value)]
-            ChatsController.addUserToChat(userId, this.props.selectedChat!).then(() => {
+            chatsController.addUserToChat(userId, this.props.selectedChat!).then(() => {
                 const message = (this.children.addUserInput as Input).setValue('Пользователь добавлен')
                 return message
             }).catch(() => (this.children.addUserInput as Input).setValue('Произошла ошибка'))
@@ -100,7 +100,7 @@ class MessengerBase extends Block<MessengerProps> {
         const login = (this.children.searchUserInput as Input).getValue()
         if (login) {
             const data = { login }
-            ProfileController.searchUser(data).then(() => {
+            profileController.searchUser(data).then(() => {
                 const { id } = store.getState().userSearchResults.find((user: User) => user.login === login)
                 return (this.children.searchUserInput as Input).setValue(id)
             }).catch(() => (this.children.searchUserInput as Input).setValue('Произошла ошибка'))
@@ -112,7 +112,7 @@ class MessengerBase extends Block<MessengerProps> {
         const value = (this.children.deleteUserInput as Input).getValue()
         if (value) {
             const userId = [Number(value)]
-            ChatsController.deleteUserFromChat(userId, this.props.selectedChat!).then(() => {
+            chatsController.deleteUserFromChat(userId, this.props.selectedChat!).then(() => {
                 const message = (this.children.deleteUserInput as Input).setValue('Пользователь удален')
                 return message
             }).catch(() => (this.children.deleteUserInput as Input).setValue('Произошла ошибка'))

@@ -4,7 +4,7 @@ import { Chat } from '../chat/chat'
 import styles from './styles.module.pcss'
 import { withStore } from '../../hocs/withStore'
 import { ChatInfo } from '../../api/chat-api'
-import ChatsController from '../../controllers/chats-controller'
+import { chatsController } from '../../controllers/chats-controller'
 import { Link } from '../link/link'
 import { Button } from '../button/button'
 import { Input } from '../input/input'
@@ -49,7 +49,7 @@ class ChatsListBase extends Block<ChatsListProps> {
         this.props.createChatMode = !this.props.createChatMode
         const data = (this.children.input as Input).getValue()
         if (data) {
-            ChatsController.create(data).then(() => {
+            chatsController.create(data).then(() => {
                 this.props.createChatMode = false
             }).catch(() => (this.children.input as Input).setValue('Что-то пошло не так'))
         }
@@ -60,7 +60,7 @@ class ChatsListBase extends Block<ChatsListProps> {
             ...data,
             events: {
                 click: () => {
-                    ChatsController.selectChat(data.id)
+                    chatsController.selectChat(data.id)
                 },
             },
         }))

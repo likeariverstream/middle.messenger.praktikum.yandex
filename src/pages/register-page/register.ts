@@ -5,7 +5,7 @@ import { Input } from '../../components/input/input'
 import styles from './styles.module.pcss'
 import { Link } from '../../components/link/link'
 import { SignupData } from '../../api/auth-api'
-import AuthController from '../../controllers/auth-controller'
+import { authController } from '../../controllers/auth-controller'
 import { Routes } from '../../types/routes'
 
 export class RegisterPage extends Block {
@@ -69,7 +69,7 @@ export class RegisterPage extends Block {
             .filter((child) => child instanceof Input)
             .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
         const data = Object.fromEntries(values)
-        AuthController.signup(data as SignupData)
+        authController.signup(data as SignupData)
     }
 
     render() {
