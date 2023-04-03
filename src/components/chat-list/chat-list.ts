@@ -38,6 +38,9 @@ class ChatsListBase extends Block<ChatsListProps> {
     }
 
     protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
+        if (oldProps && newProps) {
+            return true
+        }
         this.children.chats = this.createChats(newProps)
         return true
     }

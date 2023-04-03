@@ -1,7 +1,9 @@
+@import url("../../vars.pcss");
+
 .register {
     width: 100%;
     margin: 0 auto;
-    background: #3b3838;
+    background: $backgroundSecondaryGray;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,15 +16,16 @@
     align-items: center;
     gap: 16px;
     border-radius: 8px;
-    border: 0.5px solid rgba(207, 201, 176, 0.9);
+    border: 0.5px solid $formBorderColor;
     transition: all .3s ease-in-out;
     padding: 16px 12px;
+    
     &:hover {
-        border: 2px solid rgba(207, 201, 176, 0.7); 
+        border: 2px solid $formBorderHoverColor; 
     }
 }
 
 .title {
-    color: rgba(207, 201, 176, 0.9);;
+    color: $formBorderColor;
     margin: 0;
 }

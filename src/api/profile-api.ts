@@ -15,19 +15,19 @@ export class ProfileAPI extends BaseAPI {
         super('/user')
     }
 
-    read(identifier: string): Promise<any> {
+    read(identifier: string): Promise<Omit<User, 'password' | 'avatar'>> {
         return this.http.get(`/${identifier}`)
     }
 
-    update(data: any): Promise<any> {
+    update(data: any): Promise<User> {
         return this.http.put('/profile', data)
     }
 
-    loadAvatar(data: FormData): Promise<any> {
+    changeAvatar(data: FormData): Promise<Omit<User, 'password' | 'avatar'>> {
         return this.http.put('/profile/avatar', data)
     }
 
-    changePassword(data: ChangePassword): Promise<User> {
+    changePassword(data: ChangePassword): Promise<Omit<User, 'password' | 'avatar'>> {
         return this.http.put('/password', data)
     }
 

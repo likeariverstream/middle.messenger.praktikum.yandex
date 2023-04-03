@@ -13,14 +13,14 @@ class ProfileController {
         try {
             await this.api.update(data)
             await AuthController.fetchUser()
-        } catch (e: any) {
+        } catch (e) {
             store.set('user.error', (e))
         }
     }
 
     async updateAvatar(data: FormData) {
         try {
-            await this.api.loadAvatar(data)
+            await this.api.changeAvatar(data)
             await AuthController.fetchUser()
         } catch (e) {
             store.set('user.error', (e))

@@ -133,6 +133,9 @@ class ProfilePageBase extends Block<ProfileProps> {
     }
 
     protected componentDidUpdate(oldProps: ProfileProps, newProps: ProfileProps): boolean {
+        if (oldProps && newProps) {
+            return true
+        }
         (this.children.fields as ProfileField[]).forEach((field, i) => {
             field.setProps({ value: newProps[userFields[i]] })
         })

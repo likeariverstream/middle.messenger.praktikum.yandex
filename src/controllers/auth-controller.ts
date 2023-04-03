@@ -15,7 +15,7 @@ class AuthController {
             await this.api.signin(data)
             await this.fetchUser()
             router.go('/messenger')
-        } catch (e: any) {
+        } catch (e) {
             console.error(e)
         }
     }
@@ -25,7 +25,7 @@ class AuthController {
             await this.api.signup(data)
             await this.fetchUser()
             router.go('/messenger')
-        } catch (e: any) {
+        } catch (e) {
             console.error(e.message)
         }
     }
@@ -40,7 +40,7 @@ class AuthController {
             MessagesController.closeAll()
             await this.api.logout()
             router.go('/')
-        } catch (e: any) {
+        } catch (e) {
             console.error(e.message)
         }
     }
