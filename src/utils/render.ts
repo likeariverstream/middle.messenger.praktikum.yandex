@@ -1,14 +1,15 @@
-type RenderDOM = (query: string, block: {
-    getContent: () => Node,
-    dispatchComponentDidMount: () => void
-}) => Element | undefined;
+import { Block } from './block'
 
-export const renderDOM: RenderDOM = (query, block) => {
+export const render = (query: string, block: Block) => {
     const root = document.querySelector(query)
-    if (root) {
-        root.appendChild(block.getContent())
-        block.dispatchComponentDidMount()
-        return root
+
+    if (root === null) {
+        throw new Error(`root not found by selector "${query}"`)
     }
-    return undefined
+
+    root.innerHTML = ''
+
+    root.append(block.getContent()!)
+    block.dispatchComponentDidMount()
+    return root
 }

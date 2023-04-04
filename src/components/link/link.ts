@@ -1,34 +1,33 @@
-import Handlebars from 'handlebars'
+import { withRouter, PropsWithRouter } from '../../hocs/whithRouter'
 import { Block } from '../../utils/block'
+import styles from './styles.module.pcss'
+import template from './template.hbs'
 
-export interface Link {
-    tagName: string
-    __id: string
+interface LinkProps extends PropsWithRouter {
+    to: string
+    text: string
     events: {
         click: () => void
     }
 }
-type Props = {
-    text: string
-    class: string
-    href: string
-    click: (e: Event) => void
-}
-export class Link extends Block {
-    constructor(tagName: string | undefined, props: Props) {
-        super(tagName, {
+
+export class BaseLink extends Block<LinkProps> {
+    constructor(props: LinkProps) {
+        super({
             ...props,
             events: {
-                click: props.click,
+                click: () => this.navigate(),
             },
         })
     }
 
+    navigate() {
+        this.props.router.go(this.props.to)
+    }
+
     render() {
-        this.element?.setAttribute('href', this.props.href)
-        const { tagName } = this
-        const source = this.props.text
-        const template = Handlebars.compile(source)
-        return template({ tagName })
+        return this.compile(template, { ...this.props, styles })
     }
 }
+
+export const Link = withRouter(BaseLink)

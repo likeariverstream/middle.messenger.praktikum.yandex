@@ -1,0 +1,38 @@
+@import url("../../vars.pcss");
+
+.chat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    height: 50px;
+    padding: 8px;
+    box-sizing: border-box;
+    background: $backgroundSecondaryBlack;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &>button {
+        font-size: 8px;
+        padding: 4px;
+    }
+}
+
+.selected {
+    background: gray;
+    color: $backgroundSecondaryBlack;
+}
+
+.badge {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: $backgroundBlue;
+    font-size: 10px;
+    text-align: center;
+    line-height: 15px;
+    color: $chatBadgeColor;
+    vertical-align: middle;
+}

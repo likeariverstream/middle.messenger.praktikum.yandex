@@ -1,0 +1,50 @@
+.messenger {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    padding: 10px 30px;
+    gap: 8px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 12px;
+    justify-content: space-between;
+
+    &>input {
+        min-width: 30%;
+    }
+}
+
+.messages {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+
+.footer {
+    display: flex;
+    gap: 8px;
+    flex-flow: row nowrap;
+    width: 100%;
+    margin-top: auto;
+
+    &>input {
+        width: 100%;
+        border-radius: 4px; 
+    }
+
+    &>button {
+        margin-left: auto;
+    }
+}

@@ -2,7 +2,7 @@
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
   "engines": {
-    "node": "v16.0.0"
+    "node": "v16.10.0"
   },
   "targets": {
     "app": {
@@ -13,8 +13,9 @@
     }
   },
   "scripts": {
-    "dev": "parcel src/index.hbs --no-cache --open",
-    "build": "parcel build src/index.hbs --no-cache",
+    "dev": "parcel src/index.html --no-cache --open",
+    "restart": "rimraf -rf ./dist && npm run dev --open",
+    "build": "parcel build src/index.html --no-cache",
     "start": "npm run build && node server.js",
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",
@@ -34,8 +35,10 @@
     "@types/uuid": "9.0.1",
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.54.0",
+    "chai": "4.3.7",
     "eslint": "8.35.0",
     "eslint-config-airbnb": "19.0.4",
+    "mocha": "8.0.0",
     "parcel": "2.8.3",
     "postcss": "8.4.21",
     "postcss-import": "15.1.0",

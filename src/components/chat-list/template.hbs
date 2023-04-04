@@ -1,0 +1,12 @@
+<aside class="{{ styles.chats }}">
+  {{{profileLink}}}
+  {{{button}}}
+  {{#if createChatMode }}{{{input}}}{{/if}}
+  {{#if isLoaded }}
+  {{#each chats}}
+  {{{this}}}
+  {{/each}}
+  {{else}}
+  Загружается...
+  {{/if}}
+</aside>

@@ -1,0 +1,17 @@
+@import url("../../vars.pcss");
+
+.chats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 240px;
+    padding: 12px 8px;
+    height: 100%;
+    background: $backgroundGray;
+    overflow-y: auto;
+    max-width: 1024px;
+
+    &>input {
+        min-width: 240px;
+    }
+}

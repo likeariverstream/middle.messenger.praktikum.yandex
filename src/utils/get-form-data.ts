@@ -7,6 +7,5 @@ export const getFormData = (e: Event | SubmitEvent, id: string): void => {
         inputs.forEach((input) => {
             data[input.name] = input.value
         })
-        console.log(data)
     }
 }

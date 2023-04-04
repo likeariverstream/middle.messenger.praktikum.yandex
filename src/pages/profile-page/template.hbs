@@ -1,0 +1,25 @@
+<main class="{{ styles.profile }}">
+    <div class="{{ styles.form }}">
+        <h2 class="{{ styles.title }}">
+            Данные профиля
+        </h2>
+        {{{avatar}}}
+        <form class="{{styles.file-form}}" action="/upload" enctype="multipart/form-data">
+            {{{ changeAvatarInput }}}
+            {{{ changeAvatarButton }}}
+        </form>
+        <form class="{{styles.password-form}}" action="post">
+            {{{ oldPasswordInput }}}
+            {{{ newPasswordInput }}}
+            {{{ changePasswordButton }}}
+        </form>
+        {{#each fields}}
+        {{{this}}}
+        {{/each}}
+        <div class="{{ styles.container }}">
+            {{{ confirmButton }}}
+            <span class="{{ styles.span }}">Или</span>
+            {{{ logoutButton }}}
+        </div>
+    </div>
+</main>
