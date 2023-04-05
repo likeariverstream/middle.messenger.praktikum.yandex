@@ -18,3 +18,6 @@ require.extensions['.hbs'] = function (module, filename) {
 require.extensions['.pcss'] = function () {
   module.exports = () => ({});
 }
+require.extensions['.ts'] = () => {
+  module.exports = () => ({});
+}

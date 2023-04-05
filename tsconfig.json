@@ -24,5 +24,8 @@
         "noImplicitAny": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true
+    },
+    "ts-node": {
+        "files": true
     }
 }
