@@ -1,7 +1,8 @@
 import  {router } from './router'
 import { BlockConstructable } from './route';
 import { expect } from 'chai';
-import sinon from 'sinon';
+import Sinon from 'sinon';
+import { describe, it } from 'mocha';
 
 describe('router', () => {
 
@@ -16,7 +17,7 @@ describe('router', () => {
     }
   }
 
-  const getContentFake = sinon.fake.returns(document.createElement('div'));
+  const getContentFake = Sinon.fake.returns(document.createElement('div'));
 
   const BlockMock = class {
     getContent = getContentFake;

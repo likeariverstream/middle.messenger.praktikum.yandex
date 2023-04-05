@@ -14,13 +14,12 @@
   },
   "scripts": {
     "dev": "parcel src/index.html --no-cache --open",
-    "restart": "rimraf -rf ./dist && yarn run dev --open",
     "build": "parcel build src/index.html --no-cache",
     "start": "yarn run build && node server.js",
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",
     "stylelint": "stylelint .",
-    "test": "mocha --require ts-node/register --require ./mochaSetup.js \"./src/**/*.test.ts\""
+    "test": "mocha --require ts-node/register --require mochaSetup.js 'src/**/*.test.ts'"
   },
   "repository": {
     "type": "git",
@@ -44,7 +43,6 @@
     "eslint-config-airbnb": "19.0.4",
     "jsdom": "^21.1.1",
     "mocha": "^9.2.1",
-    "mocha-typescript": "^1.1.17",
     "parcel": "2.8.3",
     "postcss": "8.4.21",
     "postcss-import": "15.1.0",
