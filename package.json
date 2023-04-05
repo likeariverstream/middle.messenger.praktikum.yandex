@@ -29,7 +29,7 @@
   "author": "Sergey Kalachev",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
     "@parcel/transformer-inline-string": "2.8.3",
     "@types/uuid": "9.0.1",
@@ -38,7 +38,7 @@
     "chai": "4.3.7",
     "eslint": "8.35.0",
     "eslint-config-airbnb": "19.0.4",
-    "mocha": "8.0.0",
+    "mocha": "^9.2.1",
     "parcel": "2.8.3",
     "postcss": "8.4.21",
     "postcss-import": "15.1.0",
@@ -51,7 +51,10 @@
   },
   "dependencies": {
     "express": "4.18.2",
+    "glob-parent": "^5.1.2",
     "handlebars": "4.7.7",
+    "node": "^16.13.0",
+    "npm": "^9.6.3",
     "uuid": "9.0.0"
   }
 }
