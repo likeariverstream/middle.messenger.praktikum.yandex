@@ -2,7 +2,7 @@
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
   "engines": {
-    "node": "v16.10.0"
+    "node": "v16.13.0"
   },
   "targets": {
     "app": {
@@ -14,9 +14,9 @@
   },
   "scripts": {
     "dev": "parcel src/index.html --no-cache --open",
-    "restart": "rimraf -rf ./dist && npm run dev --open",
+    "restart": "rimraf -rf ./dist && yarn run dev --open",
     "build": "parcel build src/index.html --no-cache",
-    "start": "npm run build && node server.js",
+    "start": "yarn run build && node server.js",
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",
     "stylelint": "stylelint ."
@@ -29,7 +29,6 @@
   "author": "Sergey Kalachev",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
     "@parcel/transformer-inline-string": "2.8.3",
     "@types/uuid": "9.0.1",
@@ -53,8 +52,6 @@
     "express": "4.18.2",
     "glob-parent": "^5.1.2",
     "handlebars": "4.7.7",
-    "node": "^16.13.0",
-    "npm": "^9.6.3",
     "uuid": "9.0.0"
   }
 }
