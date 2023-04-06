@@ -5,8 +5,14 @@
     "exclude": [
         "node_modules"
     ],
+    "lib": [
+        "ESNext",
+        "DOM"
+    ],
+    "module": "CommonJS",
     "compilerOptions": {
         "outDir": "dist",
+        "rootDir": "./src",
         "target": "esnext",
         "declaration": false,
         "strictNullChecks": true,
@@ -23,7 +29,8 @@
         "moduleResolution": "node",
         "noImplicitAny": true,
         "noUnusedLocals": true,
-        "noUnusedParameters": true
+        "noUnusedParameters": true,
+        "types": ["mocha", "node", "chai"]
     },
     "ts-node": {
         "files": true

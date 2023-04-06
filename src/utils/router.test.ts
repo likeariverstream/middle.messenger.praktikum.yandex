@@ -1,10 +1,9 @@
-import  {router } from './router'
-import { BlockConstructable } from './route';
+import { BlockConstructable } from './route'
+import { router } from './router'
 import { expect } from 'chai';
-import Sinon from 'sinon';
-import { describe, it } from 'mocha';
+import sinon from 'sinon';
 
-describe('router', () => {
+describe('Router', () => {
 
   global.window.history.back = () => {
     if (typeof window.onpopstate === 'function') {
@@ -17,7 +16,7 @@ describe('router', () => {
     }
   }
 
-  const getContentFake = Sinon.fake.returns(document.createElement('div'));
+  const getContentFake = sinon.fake.returns(document.createElement('div'));
 
   const BlockMock = class {
     getContent = getContentFake;
