@@ -1,38 +1,18 @@
 {
-    "include": [
-        "src"
-    ],
-    "exclude": [
-        "node_modules"
-    ],
-    "lib": [
+    "ts-node": {
+      "files": true
+    },
+    "compilerOptions": {
+      "target": "es2016",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "lib": [
         "ESNext",
         "DOM"
-    ],
-    "module": "CommonJS",
-    "compilerOptions": {
-        "outDir": "dist",
-        "rootDir": "./src",
-        "target": "esnext",
-        "declaration": false,
-        "strictNullChecks": true,
-        "sourceMap": true,
-        "baseUrl": "./src",
-        "allowJs": true,
-        "checkJs": false,
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "strict": false,
-        "forceConsistentCasingInFileNames": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "noImplicitAny": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "types": ["mocha", "node", "chai"]
-    },
-    "ts-node": {
-        "files": true
+      ]
     }
-}
+  }
+  

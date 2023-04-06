@@ -19,8 +19,7 @@
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",
     "stylelint": "stylelint .",
-    "test": "mocha",
-    "compile": "tsc --declaration"
+    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
   },
   "directories": {
     "src": "./src",

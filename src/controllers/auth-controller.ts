@@ -28,7 +28,7 @@ class AuthController {
             await this.fetchUser()
             router.go('/messenger')
         } catch (e) {
-            console.error(e.message)
+            console.error((e as Error).message)
         }
     }
 
@@ -43,7 +43,7 @@ class AuthController {
             await this.api.logout()
             router.go('/')
         } catch (e) {
-            console.error(e.message)
+            console.error((e as Error).message)
         }
     }
 }
