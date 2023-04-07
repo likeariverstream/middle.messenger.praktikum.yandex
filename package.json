@@ -21,10 +21,6 @@
     "stylelint": "stylelint .",
     "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
   },
-  "directories": {
-    "src": "./src",
-    "test": "./src"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/likeariverstream/middle.messenger.praktikum.yandex.git"
@@ -33,7 +29,6 @@
   "author": "Sergey Kalachev",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
     "@parcel/transformer-inline-string": "2.8.3",
     "@types/chai": "4.3.4",
     "@types/jsdom": "21.1.1",
@@ -55,7 +50,6 @@
     "jsdom": "21.1.1",
     "mini-css-extract-plugin": "^2.7.5",
     "mocha": "10.2.0",
-    "parcel": "2.8.3",
     "postcss": "8.4.21",
     "postcss-import": "15.1.0",
     "postcss-loader": "^7.2.4",
