@@ -18,10 +18,11 @@
 
 ## Команды
 
-- `yarn install` — установка стабильной версии,
-- `yarn run start` — запуск версии для разработчика,
-- `yarn run build` — сборка стабильной версии.
-- `yarn run typescript` — запуск Typescript.
-- `yarn run eslint` — запуск Eslint.
-- `yarn run stylelint` — запуск Stylelint.
-- `yarn run test` — запуск Stylelint.
+- `npm install` — установка стабильной версии,
+- `npm run start` — запуск версии для разработчика,
+- `npm run build` — сборка стабильной версии.
+- `npm run typescript` — запуск Typescript.
+- `npm run eslint` — запуск Eslint.
+- `npm run stylelint` — запуск Stylelint.
+- `npm run test` — запуск Stylelint.
+- `npm audit --production` — проверить наличие уязвимостей.

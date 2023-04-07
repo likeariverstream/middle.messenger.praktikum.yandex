@@ -13,9 +13,9 @@
     }
   },
   "scripts": {
-    "dev": "webpack-dev-server  --mode development",
-    "build": "webpack --progress  --mode production",
-    "start": "node ./server.js",
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --progress --mode production",
+    "start": "npm run build && node server.js",
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",
     "stylelint": "stylelint .",
@@ -35,6 +35,7 @@
   "author": "Sergey Kalachev",
   "license": "ISC",
   "devDependencies": {
+    "@types/body-parser": "^1.19.2",
     "@types/chai": "4.3.4",
     "@types/jsdom": "21.1.1",
     "@types/mocha": "10.0.1",
@@ -47,6 +48,8 @@
     "css-loader": "6.7.3",
     "eslint": "8.35.0",
     "eslint-config-airbnb": "19.0.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "7.32.2",
     "express-history-api-fallback": "2.2.1",
     "handlebars-template-loader": "1.0.0",
