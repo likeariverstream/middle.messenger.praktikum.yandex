@@ -2,6 +2,7 @@
 /dist
 /.parcel-cache
 /.github
+*.lock
 *.ts
 *.js
 *.json
@@ -9,3 +10,4 @@
 *.md
 *.hbs
 *.html
+Dockerfile

@@ -11,7 +11,7 @@ export enum Method {
   type Options = {
     method: Method;
     data?: any;
-  };
+  }
 
 export class HTTPTransport {
     static API_URL = baseUrl

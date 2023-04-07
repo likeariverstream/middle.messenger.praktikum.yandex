@@ -6,6 +6,7 @@ import { ProfilePage } from './pages/profile-page/profile'
 import { chatsController } from './controllers/chats-controller'
 import { Routes } from './types/routes'
 import { router } from './utils/router'
+import './index.pcss'
 
 window.addEventListener('DOMContentLoaded', async () => {
     router

@@ -6,7 +6,6 @@ import { Input } from '../../components/input/input'
 import { Button } from '../../components/button/button'
 import { Routes } from '../../types/routes'
 import { authController } from '../../controllers/auth-controller'
-// import { Patterns } from '../../types/patterns'
 
 export class LoginPage extends Block {
     constructor() {

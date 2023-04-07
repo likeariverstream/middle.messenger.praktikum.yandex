@@ -2,7 +2,7 @@
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
   "engines": {
-    "node": "v16.10.0"
+    "node": "v16.13.0"
   },
   "targets": {
     "app": {
@@ -13,41 +13,65 @@
     }
   },
   "scripts": {
-    "dev": "parcel src/index.html --no-cache --open",
-    "restart": "rimraf -rf ./dist && npm run dev --open",
-    "build": "parcel build src/index.html --no-cache",
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --progress --mode production",
     "start": "npm run build && node server.js",
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",
-    "stylelint": "stylelint ."
+    "stylelint": "stylelint .",
+    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/likeariverstream/middle.messenger.praktikum.yandex.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run test && yarn run typescript && yarn run eslint && yarn start stylelint"
+    }
+  },
   "baseUrl": "/",
   "author": "Sergey Kalachev",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
-    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
-    "@parcel/transformer-inline-string": "2.8.3",
+    "@types/body-parser": "^1.19.2",
+    "@types/chai": "4.3.4",
+    "@types/jsdom": "21.1.1",
+    "@types/mocha": "10.0.1",
+    "@types/sinon": "10.0.13",
     "@types/uuid": "9.0.1",
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.54.0",
     "chai": "4.3.7",
+    "clean-webpack-plugin": "4.0.0",
+    "css-loader": "6.7.3",
     "eslint": "8.35.0",
     "eslint-config-airbnb": "19.0.4",
-    "mocha": "8.0.0",
-    "parcel": "2.8.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "7.32.2",
+    "express-history-api-fallback": "2.2.1",
+    "handlebars-template-loader": "1.0.0",
+    "html-webpack-plugin": "5.5.0",
+    "husky": "8.0.3",
+    "jsdom": "21.1.1",
+    "mini-css-extract-plugin": "2.7.5",
+    "mocha": "10.2.0",
     "postcss": "8.4.21",
     "postcss-import": "15.1.0",
+    "postcss-loader": "7.2.4",
     "postcss-nested": "6.0.0",
     "postcss-simple-vars": "7.0.1",
+    "sinon": "15.0.3",
     "stylelint": "15.2.0",
     "stylelint-config-standard": "30.0.1",
+    "ts-loader": "9.4.2",
     "ts-node": "10.9.1",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "webpack": "5.78.0",
+    "webpack-cli": "5.0.1",
+    "webpack-dev-server": "4.13.2"
   },
   "dependencies": {
     "express": "4.18.2",

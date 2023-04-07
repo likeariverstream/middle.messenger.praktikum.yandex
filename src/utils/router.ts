@@ -1,6 +1,6 @@
 import { Route, BlockConstructable } from './route'
 
-class Router {
+export class Router {
     private static __instance: Router
 
     private routes: Route[] = []

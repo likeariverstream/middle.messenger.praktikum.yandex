@@ -1,4 +1,4 @@
-import { User } from 'api/auth-api'
+import { User } from '../../api/auth-api'
 import { Block } from '../../utils/block'
 import template from './template.hbs'
 import { Message } from '../message/message'
