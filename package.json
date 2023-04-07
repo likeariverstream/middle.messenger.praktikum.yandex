@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "webpack-dev-server  --mode development",
     "build": "webpack --progress  --mode production",
-    "start": "yarn run build && node server.js",
+    "start": "node ./server.js",
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",
     "stylelint": "stylelint .",
