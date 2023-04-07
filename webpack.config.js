@@ -8,7 +8,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
-        clean: true
+        clean: true,
     },
     mode: 'development',
     resolve: {
@@ -20,7 +20,7 @@ module.exports = {
         compress: true,
         port: 3000,
         open: true,
-        hot: true
+        hot: true,
     },
     module: {
         rules: [
@@ -34,7 +34,7 @@ module.exports = {
                         },
                     },
                 ],
-                exclude: /(node_modules)/
+                exclude: /(node_modules)/,
             },
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
@@ -44,24 +44,24 @@ module.exports = {
                 test: /\.pcss$/,
                 use: [MiniCssExtractPlugin.loader, {
                     loader: 'css-loader',
-                    options: { importLoaders: 1 }
+                    options: { importLoaders: 1 },
 
                 },
-                    'postcss-loader']
+                'postcss-loader'],
             },
             {
                 test: /\.hbs$/,
                 use: [
-                    { loader: 'handlebars-template-loader' }
-                ]
+                    { loader: 'handlebars-template-loader' },
+                ],
             },
-        ]
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './src/index.html',
         }),
         new MiniCssExtractPlugin(),
-        new CleanWebpackPlugin()
-    ]
+        new CleanWebpackPlugin(),
+    ],
 }
