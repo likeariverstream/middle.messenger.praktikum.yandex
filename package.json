@@ -19,7 +19,8 @@
     "typescript": "tsc --noEmit",
     "eslint": "eslint .",
     "stylelint": "stylelint .",
-    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
+    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
