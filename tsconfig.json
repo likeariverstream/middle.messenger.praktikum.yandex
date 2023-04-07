@@ -5,6 +5,8 @@
     "compilerOptions": {
       "target": "es2016",
       "module": "commonjs",
+      "sourceMap": true,
+
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,
       "strict": true,
