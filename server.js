@@ -6,4 +6,4 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.static('./dist/'))
 app.use(fallback('dist/index.html', { root: `${__dirname}/` }))
-app.listen(PORT, () => console.log())
+app.listen(PORT, () => console.log(`App started on ${PORT}`))
