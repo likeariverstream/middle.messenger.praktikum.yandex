@@ -7,17 +7,18 @@ module.exports = {
     entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js'
+        filename: 'index.js',
+        clean: true
     },
     mode: 'development',
     resolve: {
-        extensions: ['.ts', '.js', '.json'],
+        extensions: ['.ts', '.js', '.json', '.pcss', '.hbs', '.html'],
     },
     devServer: {
         static: path.resolve(__dirname, '/dist'),
         historyApiFallback: true,
         compress: true,
-        port: 8080,
+        port: 3000,
         open: true,
         hot: true
     },
@@ -50,7 +51,9 @@ module.exports = {
             },
             {
                 test: /\.hbs$/,
-                loader: 'handlebars-loader'
+                use: [
+                    { loader: 'handlebars-template-loader' }
+                ]
             },
         ]
     },

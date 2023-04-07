@@ -44,7 +44,7 @@
     "eslint": "8.35.0",
     "eslint-config-airbnb": "19.0.4",
     "express-history-api-fallback": "^2.2.1",
-    "handlebars-loader": "^1.7.3",
+    "handlebars-template-loader": "^1.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "jsdom": "21.1.1",
