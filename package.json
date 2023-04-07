@@ -25,6 +25,11 @@
     "type": "git",
     "url": "git+https://github.com/likeariverstream/middle.messenger.praktikum.yandex.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run test && yarn run typescript && yarn run eslint && yarn start stylelint"
+    }
+  },
   "baseUrl": "/",
   "author": "Sergey Kalachev",
   "license": "ISC",
@@ -47,6 +52,7 @@
     "handlebars-template-loader": "^1.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.3",
     "jsdom": "21.1.1",
     "mini-css-extract-plugin": "^2.7.5",
     "mocha": "10.2.0",
